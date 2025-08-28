@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Join Eventra</title>
+<link rel="stylesheet" href="./css/signup.css">
+</head>
+<body>
+
+<div class="card">
+  <h1>Join Eventra</h1>
+  <p class="sub">Create your premium event rental account</p>
+
+  <div class="account-types">
+    <div class="option active" data-type="customer">Customer<br><small>Rent items</small></div>
+    <div class="option" data-type="vendor">Vendor<br><small>List items</small></div>
+  </div>
+
+  <form id="signupForm">
+    <div class="field">
+      <label for="first">First Name</label>
+      <input type="text" id="first" required>
+    </div>
+    <div class="field">
+      <label for="last">Last Name</label>
+      <input type="text" id="last" required>
+    </div>
+    <div class="field">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" required>
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <input type="password" id="password" required placeholder="Create a strong password">
+    </div>
+    <div class="field">
+      <label for="confirm">Confirm Password</label>
+      <input type="password" id="confirm" required placeholder="Confirm your password">
+    </div>
+
+    <div class="checkbox">
+      <label><input type="checkbox" required> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox"> I’d like to receive marketing emails</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Account</button>
+  </form>
+
+  <div class="divider">OR CONTINUE WITH</div>
+
+  <button class="btn-google">
+    <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google">
+    Continue with Google
+  </button>
+
+  <div class="footer-links">
+    Already have an account? <a href="login.html">Sign in</a>
+  </div>
+</div>
+
+<script src="./js/signup.js">
+
+</script>
+
+</body>
+</html>
