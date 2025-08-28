@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eventra — Luxury Event Rentals</title>
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header class="nav">
+      <div class="container nav-inner">
+        <div class="brand">Eventra</div>
+
+        <nav class="menu" aria-label="Main">
+          <a href="#">Home</a>
+          <a href="#categories">Categories</a>
+          <a href="#how">How it Works</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div style="display: flex; gap: 10px; align-items: center">
+          <button class="btn btn-outline" id="loginBtn">Sign In</button>
+          <button class="btn btn-primary">Explore</button>
+          <button class="hamburger" id="hamburger" aria-label="Open menu">
+            ☰
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <!-- Left: copy -->
+        <div>
+          <span class="eyebrow"
+            >Premium Event Rentals <span class="accent-pill">↗</span></span
+          >
+          <h1>Turn Your Event<br />Into Memories</h1>
+          <p class="sub">
+            Rent elegant <b>furniture</b>, professional <b>sound systems</b>,
+            dazzling <b>lighting</b>, premium <b>decor</b>, and reliable
+            <b>catering equipment</b>—all in one place.
+          </p>
+
+          <div class="cta-row">
+            <button class="btn btn-primary btn-lg">Start Booking</button>
+            <button class="btn btn-ghost btn-lg">Browse Rentals</button>
+          </div>
+
+          <!-- Email/date glass CTA -->
+          <form class="glass" id="availabilityForm">
+            <input type="date" id="date" required />
+            <input
+              type="email"
+              id="email"
+              placeholder="Your email (optional)"
+            />
+            <button type="submit" class="btn btn-primary">
+              Check Availability
+            </button>
+          </form>
+
+          <!-- Stats -->
+          <div class="stats">
+            <div class="stat">
+              <div class="big">500+</div>
+              <div class="muted">Events Served</div>
+            </div>
+            <div class="stat">
+              <div class="big">120+</div>
+              <div class="muted">Rental Products</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: visuals -->
+        <div class="hero-visual">
+          <div class="frame">
+            <img
+              alt="Luxurious event furniture"
+              src="https://images.unsplash.com/photo-1522156373667-4c7234bbd804?q=80&w=1400&auto=format&fit=crop"
+            />
+          </div>
+          <div class="frame frame-small">
+            <img
+              alt="Sound system at an event"
+              src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1400&auto=format&fit=crop"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOGOS -->
+    <div class="container logos" aria-label="Trusted by">
+      <div class="logo-chip">Zoom</div>
+      <div class="logo-chip">ASUS</div>
+      <div class="logo-chip">AECOM</div>
+      <div class="logo-chip">Nike</div>
+      <div class="logo-chip">Stripe</div>
+    </div>
+
+    <!-- PREMIUM CATEGORIES -->
+    <section class="section container" id="categories">
+      <h2>Premium Categories</h2>
+      <div class="cards">
+        <article class="card">
+          <img
+            src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200&q=80&auto=format&fit=crop"
+            alt="Furniture"
+          />
+          <div class="body">
+            <h3>Furniture</h3>
+            <p>Elegant seating, tables, and staging.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            src="https://images.unsplash.com/photo-1554995207-c18c203602cb?w=1200&q=80&auto=format&fit=crop"
+            alt="Decor"
+          />
+          <div class="body">
+            <h3>Décor</h3>
+            <p>Backdrops, centerpieces, and accents.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200&q=80&auto=format&fit=crop"
+            alt="Lighting"
+          />
+          <div class="body">
+            <h3>Lighting</h3>
+            <p>Ambience, stage, and spotlight kits.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            src="https://images.unsplash.com/photo-1529692236671-f1ad6c6a92ad?w=1200&q=80&auto=format&fit=crop"
+            alt="Catering"
+          />
+          <div class="body">
+            <h3>Catering</h3>
+            <p>Warmers, dispensers, and serving gear.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container foot">
+        <div>© 2025 Eventra. All rights reserved.</div>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#contact">Support</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>
