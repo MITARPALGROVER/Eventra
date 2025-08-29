@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Eventra — Luxury Event Rentals</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/navbar.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <!-- NAVBAR -->
@@ -13,15 +14,15 @@
         <div class="brand">Eventra</div>
 
         <nav class="menu" aria-label="Main">
-          <a href="#">Home</a>
-          <a href="#categories">Categories</a>
-          <a href="#how">How it Works</a>
-          <a href="#contact">Contact</a>
+          <a href="index.html">Home</a>
+          <a href="categories.html">Categories</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
         </nav>
 
         <div style="display: flex; gap: 10px; align-items: center">
           <button class="btn btn-outline" id="loginBtn">Sign In</button>
-          <button class="btn btn-primary">Explore</button>
+          <button class="btn btn-primary" id="signupBtn">Get Started</button>
           <button class="hamburger" id="hamburger" aria-label="Open menu">
             ☰
           </button>
@@ -45,12 +46,14 @@
           </p>
 
           <div class="cta-row">
-            <button class="btn btn-primary btn-lg">Start Booking</button>
-            <button class="btn btn-ghost btn-lg">Browse Rentals</button>
+            <button class="btn btn-primary btn-lg" id="rentNow">
+              Browse catalog 
+            </button>
+            <button class="btn btn-ghost btn-lg">Become a Vendor</button>
           </div>
 
           <!-- Email/date glass CTA -->
-          <form class="glass" id="availabilityForm">
+          <!-- <form class="glass" id="availabilityForm">
             <input type="date" id="date" required />
             <input
               type="email"
@@ -60,7 +63,7 @@
             <button type="submit" class="btn btn-primary">
               Check Availability
             </button>
-          </form>
+          </form> -->
 
           <!-- Stats -->
           <div class="stats">
@@ -93,17 +96,37 @@
       </div>
     </section>
 
-    <!-- LOGOS -->
-    <div class="container logos" aria-label="Trusted by">
-      <div class="logo-chip">Zoom</div>
-      <div class="logo-chip">ASUS</div>
-      <div class="logo-chip">AECOM</div>
-      <div class="logo-chip">Nike</div>
-      <div class="logo-chip">Stripe</div>
-    </div>
+
+
+    <!-- WHY CHOOSE US SECTION -->
+    <section class="section container scroll-section" id="why-us">
+      <h2>Why Choose Eventra</h2>
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">🌟</div>
+          <h3>Premium Quality</h3>
+          <p>Every item in our inventory is carefully selected for quality, style, and reliability.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <h3>Easy Booking</h3>
+          <p>Simple reservation system with real-time availability and instant confirmations.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔄</div>
+          <h3>Hassle-Free Setup</h3>
+          <p>Professional delivery, setup, and collection included with most rentals.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">💼</div>
+          <h3>Vendor Opportunities</h3>
+          <p>Join our platform as a vendor and grow your event rental business with us.</p>
+        </div>
+      </div>
+    </section>
 
     <!-- PREMIUM CATEGORIES -->
-    <section class="section container" id="categories">
+    <section class="section container scroll-section" id="categories">
       <h2>Premium Categories</h2>
       <div class="cards">
         <article class="card">
@@ -130,7 +153,7 @@
 
         <article class="card">
           <img
-            src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200&q=80&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1400&auto=format&fit=crop"
             alt="Lighting"
           />
           <div class="body">
@@ -141,19 +164,93 @@
 
         <article class="card">
           <img
-            src="https://images.unsplash.com/photo-1529692236671-f1ad6c6a92ad?w=1200&q=80&auto=format&fit=crop"
+            src="https://plus.unsplash.com/premium_photo-1673439305380-79947d273735?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Catering"
           />
           <div class="body">
-            <h3>Catering</h3>
-            <p>Warmers, dispensers, and serving gear.</p>
+            <h3>Event Electric Appliances</h3>
+            <p>Reliable appliances and event essentials.</p>
           </div>
         </article>
       </div>
     </section>
 
+    <!-- TESTIMONIALS -->
+    <section class="section container scroll-section" id="testimonials">
+      <h2>What Our Customers Say</h2>
+      <div class="testimonials">
+        <div class="testimonial">
+          <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"Eventra made organizing my daughter's wedding so much easier. The quality of their furniture and decor items exceeded our expectations."</p>
+          <div class="testimonial-author">
+            <strong>Sarah Johnson</strong>
+            <span>Wedding Planner</span>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"As a vendor, joining Eventra has boosted my business significantly. Their platform makes it simple to showcase my inventory and manage bookings."</p>
+          <div class="testimonial-author">
+            <strong>Michael Rodriguez</strong>
+            <span>Sound Equipment Vendor</span>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"The variety of options and the ease of booking made Eventra our go-to for corporate events. Their customer service is outstanding."</p>
+          <div class="testimonial-author">
+            <strong>Emily Chen</strong>
+            <span>Corporate Event Coordinator</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- FAQ SECTION -->
+    <section class="section container scroll-section" id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-container">
+        <details class="faq-item">
+          <summary>How does the rental process work?</summary>
+          <p>Browse our catalog, select the items you need, choose your rental dates, and complete your booking. We'll confirm availability and handle delivery and setup at your event location on the agreed date.</p>
+        </details>
+        
+        <details class="faq-item">
+          <summary>What is your cancellation policy?</summary>
+          <p>Cancellations made 7+ days before the event receive a full refund. Cancellations 3-6 days before receive a 50% refund. Cancellations less than 72 hours before the event are non-refundable.</p>
+        </details>
+        
+        <details class="faq-item">
+          <summary>Do you offer delivery and setup services?</summary>
+          <p>Yes, we offer delivery and professional setup for all orders. Delivery fees depend on your location and the size of your order. Setup and teardown services are included for larger orders.</p>
+        </details>
+        
+        <details class="faq-item">
+          <summary>How do I become a vendor on Eventra?</summary>
+          <p>Click on "Become a Vendor" and complete our application form. Our team will review your submission and contact you within 2-3 business days to discuss the next steps and onboarding process.</p>
+        </details>
+        
+        <details class="faq-item">
+          <summary>What happens if equipment is damaged?</summary>
+          <p>All rentals include standard insurance. Minor wear and tear is expected, but significant damage will be assessed after the event. Customers are responsible for costs beyond normal wear and tear.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="cta-section container scroll-section">
+      <div class="cta-box">
+        <h2>Ready to Create Unforgettable Events?</h2>
+        <p>Join thousands of event planners and vendors who trust Eventra for their needs.</p>
+        <div class="cta-buttons">
+          <button class="btn btn-primary btn-lg">Browse Catalog</button>
+          <button class="btn btn-ghost btn-lg">Become a Vendor</button>
+        </div>
+      </div>
+    </section>
+
     <!-- FOOTER -->
-    <footer>
+    <footer class="scroll-section">
       <div class="container foot">
         <div>© 2025 Eventra. All rights reserved.</div>
         <div style="display: flex; gap: 16px; flex-wrap: wrap">

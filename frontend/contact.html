@@ -4,135 +4,31 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Contact Eventra</title>
-<style>
-  :root{
-    --text:#171717;
-    --muted:#6b7280;
-    --white:#ffffff;
-    --primary:#f5c518;       
-    --primary-ink:#0b0b0c;
-    --ring:rgba(245,197,24,.35);
-  }
-
-  body{
-    margin:0;
-    font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,Inter,"Helvetica Neue",sans-serif;
-    color:var(--text);
-    line-height:1.6;
-
-    /* animated scroll background */
-    background: linear-gradient(180deg, #b6e1ff, #ffd39e, #e1b7ff, #f7f7f9);
-    background-size: 100% 400%;
-    background-attachment: fixed;
-    animation: scrollGradient 20s ease infinite;
-  }
-
-  @keyframes scrollGradient {
-    0% { background-position: 50% 0%; }
-    50% { background-position: 50% 100%; }
-    100% { background-position: 50% 0%; }
-  }
-
-  header{
-    padding:20px 40px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-bottom:1px solid rgba(255,255,255,.3);
-  }
-  header h2{color:var(--primary);margin:0;font-size:1.5rem;}
-  nav a{
-    color:#111;
-    margin-left:20px;
-    text-decoration:none;
-    font-weight:600;
-  }
-  nav a:hover{color:var(--primary);}
-
-  .hero{
-    text-align:center;
-    padding:80px 20px 60px;
-    max-width:700px;
-    margin:auto;
-  }
-  .hero h1{
-    font-size:2.8rem;
-    margin-bottom:16px;
-    color:#111;
-  }
-  .hero p{color:var(--muted);font-size:1.2rem;}
-
-  .contact-section{
-    max-width:800px;
-    margin:60px auto;
-    padding:0 20px;
-  }
-  form{
-    background:var(--white);
-    border-radius:16px;
-    padding:30px;
-    border:1px solid #ececf2;
-    box-shadow:0 10px 20px -10px rgba(0,0,0,.2);
-  }
-  label{
-    display:block;
-    font-weight:600;
-    margin-bottom:6px;
-    color:#111;
-  }
-  input, textarea{
-    width:100%;
-    padding:12px 14px;
-    border-radius:8px;
-    border:1px solid #d1d5db;
-    margin-bottom:20px;
-    font-size:1rem;
-    box-sizing:border-box;
-  }
-  input:focus, textarea:focus{
-    outline:none;
-    border-color:var(--primary);
-    box-shadow:0 0 0 3px var(--ring);
-  }
-  textarea{resize:vertical;min-height:120px;}
-  button{
-    background:var(--primary);
-    color:var(--primary-ink);
-    padding:14px 20px;
-    border:none;
-    border-radius:10px;
-    font-size:1rem;
-    font-weight:600;
-    cursor:pointer;
-    width:100%;
-  }
-  button:hover{background:#e6b800;}
-  .info{
-    text-align:center;
-    margin-top:40px;
-    color:#111;
-  }
-  footer{
-    text-align:center;
-    padding:30px 20px;
-    border-top:1px solid rgba(255,255,255,.2);
-    color:#111;
-    margin-top:60px;
-  }
-</style>
+<link rel="stylesheet" href="./css/navbar.css">
+<link rel="stylesheet" href="./css/contact.css">
 </head>
 <body>
 
-<header>
-  <h2>Eventra</h2>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="signup.html">Sign Up</a>
-    <a href="login.html">Login</a>
-  </nav>
-</header>
+    <header class="nav">
+      <div class="container nav-inner">
+        <div class="brand">Eventra</div>
+
+        <nav class="menu" aria-label="Main">
+          <a href="index.html">Home</a>
+          <a href="categories.html">Categories</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div style="display: flex; gap: 10px; align-items: center">
+          <button class="btn btn-outline" id="loginBtn">Sign In</button>
+          <button class="btn btn-primary" id="signupBtn">Get Started</button>
+          <button class="hamburger" id="hamburger" aria-label="Open menu">
+            ☰
+          </button>
+        </div>
+      </div>
+    </header>
 
 <section class="hero">
   <h1>Contact Us</h1>
@@ -150,7 +46,7 @@
     <label for="message">Message</label>
     <textarea id="message" required placeholder="Write your message here..."></textarea>
 
-    <button type="submit">Send Message</button>
+    <button type="submit" class="submitButton">Send Message</button>
   </form>
 
   <div class="info">
@@ -163,6 +59,15 @@
 <footer>
   <p>© 2025 Eventra. All rights reserved.</p>
 </footer>
+
+  <script>
+          document.getElementById('loginBtn').addEventListener('click', ()=>{
+        window.location = "login.html";
+      });
+            document.getElementById('signupBtn').addEventListener('click', ()=>{
+        window.location = "signup.html";
+      });
+  </script>
 
 </body>
 </html>

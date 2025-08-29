@@ -1,0 +1,69 @@
+    :root {
+      --bg-1:#0f0f11;
+      --white:#ffffff;
+      --muted:#6b7280;
+      --primary:#f5c518; 
+      --primary-ink:#0b0b0c;
+      --ring:rgba(245,197,24,.35);
+    }
+
+    * { box-sizing: border-box; margin:0; padding:0 }
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      background: radial-gradient(
+          1200px 700px at 10% 5%,
+          #b6e1ff 0%,
+          transparent 55%
+        ),
+        radial-gradient(1200px 700px at 90% 95%, #ffd39e 0%, transparent 55%),
+        radial-gradient(900px 600px at 50% 60%, #e1b7ff 0%, transparent 50%),
+        #f7f7f9;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: #222;
+      line-height:1.6;
+    }
+
+    .container { max-width:1180px; margin:0 auto; padding:0 20px }
+
+    h1,h2 { font-weight:700; color: #111; }
+    h1 { font-size:2rem; text-align:center; margin-bottom:6px; }
+    h2 { font-size:1.4rem; margin-bottom:18px; }
+    p.subhead { color:var(--muted); text-align:center; margin-bottom:32px; }
+
+    /* cards */
+    .cards {
+      display:grid;
+      gap:20px;
+    }
+    @media(min-width:700px){ .cards { grid-template-columns:repeat(2,1fr); } }
+    @media(min-width:1000px){ .cards { grid-template-columns:repeat(3,1fr); } }
+
+    .card {
+      background:#fff;
+      border:1px solid #ececf2;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 20px 46px -26px rgba(0,0,0,.25);
+      transition: transform .25s ease;
+      cursor:pointer;
+    }
+    .card:hover { transform:translateY(-4px) }
+    .card img { width:100%; aspect-ratio:4/3; object-fit:cover }
+    .body { padding:14px 16px }
+    .body h3 { margin:0 0 6px; font-size:1.05rem; color:#111 }
+    .body p { margin:0; color:var(--muted); font-size:.9rem }
+
+    .badge {
+      display:inline-block;
+      background:var(--primary);
+      color:var(--primary-ink);
+      font-size:.75rem;
+      font-weight:700;
+      padding:4px 10px;
+      border-radius:999px;
+      margin-bottom:8px;
+    }
+
+    .section { margin-bottom:60px }

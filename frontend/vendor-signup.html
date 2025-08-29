@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Become a Vendor - Eventra</title>
+    <link rel="stylesheet" href="./css/navbar.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <style>
+      .vendor-hero {
+        padding: 48px 0 32px;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      
+      .vendor-benefits {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin: 48px 0;
+      }
+      
+      .benefit-item {
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 16px;
+        padding: 28px;
+        border: 1px solid #ececf2;
+        box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+        text-align: center;
+      }
+      
+      .benefit-icon {
+        font-size: 32px;
+        margin-bottom: 16px;
+      }
+      
+      .vendor-form {
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 16px;
+        padding: 32px;
+        box-shadow: 0 20px 40px -16px rgba(0, 0, 0, 0.2);
+        border: 1px solid #ececf2;
+        max-width: 600px;
+        margin: 0 auto 60px;
+      }
+      
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      
+      .full-width {
+        grid-column: span 2;
+      }
+      
+      .form-group {
+        margin-bottom: 16px;
+      }
+      
+      .form-group label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 600;
+      }
+      
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        background: #fff;
+      }
+      
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+      
+      @media (max-width: 768px) {
+        .vendor-benefits {
+          grid-template-columns: 1fr;
+        }
+        
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .full-width {
+          grid-column: span 1;
+        }
+      }
+
+      .back-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        position: absolute;
+        top: 88px;
+        left: 20px;
+        text-decoration: none;
+        color: #444;
+        font-weight: 600;
+        padding: 8px 16px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid #e5e7eb;
+        transition: all 0.2s ease;
+      }
+
+      .back-button:hover {
+        background: #fff;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header class="nav">
+      <div class="container nav-inner">
+        <div class="brand">Eventra</div>
+
+        <nav class="menu" aria-label="Main">
+          <a href="index.html">Home</a>
+          <a href="categories.html">Categories</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div style="display: flex; gap: 10px; align-items: center">
+          <button class="btn btn-outline" id="loginBtn">Sign In</button>
+          <button class="btn btn-primary" id="signupBtn">Get Started</button>
+          <button class="hamburger" id="hamburger" aria-label="Open menu">
+            ☰
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <a href="index.html" class="back-button">
+      ← Back to Home
+    </a>
+
+    <!-- VENDOR HERO -->
+    <section class="vendor-hero container">
+      <span class="eyebrow">Vendor Partnership <span class="accent-pill">↗</span></span>
+      <h1>Join Eventra as a Vendor</h1>
+      <p class="sub">
+        Expand your business reach, get more bookings, and join a network of premium event rental providers. Our platform connects you with thousands of event planners looking for quality equipment and services.
+      </p>
+    </section>
+
+    <!-- VENDOR BENEFITS -->
+    <section class="section container scroll-section">
+      <h2>Benefits of Partnering With Us</h2>
+      <div class="vendor-benefits">
+        <div class="benefit-item">
+          <div class="benefit-icon">📊</div>
+          <h3>More Visibility</h3>
+          <p>Showcase your inventory to thousands of potential clients actively looking for event rentals.</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">📱</div>
+          <h3>Easy Management</h3>
+          <p>User-friendly dashboard to manage your inventory, bookings, and client communications.</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">💸</div>
+          <h3>Secure Payments</h3>
+          <p>Reliable payment processing with transparent fees and fast deposits to your account.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VENDOR SIGNUP FORM -->
+    <section class="section container scroll-section">
+      <h2>Apply to Become a Vendor</h2>
+      <form class="vendor-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="business-name">Business Name *</label>
+            <input type="text" id="business-name" required>
+          </div>
+          <div class="form-group">
+            <label for="business-type">Business Type *</label>
+            <select id="business-type" required>
+              <option value="">Select Type</option>
+              <option value="furniture">Furniture Rental</option>
+              <option value="sound">Sound Systems</option>
+              <option value="lighting">Lighting</option>
+              <option value="decor">Décor</option>
+              <option value="catering">Catering Equipment</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contact-name">Contact Name *</label>
+            <input type="text" id="contact-name" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email Address *</label>
+            <input type="email" id="contact-email" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-phone">Phone Number *</label>
+            <input type="tel" id="contact-phone" required>
+          </div>
+          <div class="form-group">
+            <label for="location">City/Region *</label>
+            <input type="text" id="location" required>
+          </div>
+          <div class="form-group full-width">
+            <label for="business-description">Tell us about your business and inventory *</label>
+            <textarea id="business-description" required></textarea>
+          </div>
+          <div class="form-group full-width">
+            <label for="website">Website or Social Media (Optional)</label>
+            <input type="url" id="website">
+          </div>
+          <div class="form-group full-width" style="text-align: center; margin-top: 20px;">
+            <button type="submit" class="btn btn-primary btn-lg">Submit Application</button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="scroll-section">
+      <div class="container foot">
+        <div>© 2025 Eventra. All rights reserved.</div>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#contact">Support</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./js/script.js"></script>
+    <script>
+      document.querySelector('.vendor-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert("Thank you for your interest! We'll review your application and contact you within 2-3 business days.");
+      });
+    </script>
+  </body>
+</html>
