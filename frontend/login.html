@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Eventra Login</title>
 <link rel="stylesheet" href="./css/login.css">
+<script src="./js/auth.js"></script>
 </head>
 <body>
 
@@ -32,11 +33,11 @@
     </div>
     <div class="field">
       <label for="password">Password</label>
-      <input type="password" id="password" required placeholder="Enter your password">
+      <input type="password" id="password" required placeholder="Enter your password" minlength="6">
     </div>
 
     <div class="options">
-      <label><input type="checkbox"> Remember me</label>
+      <label><input type="checkbox" id="rememberMe"> Remember me</label>
       <a href="#">Forgot password?</a>
     </div>
 

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shopping Cart - Eventra</title>
+  <link rel="stylesheet" href="./css/navbar.css">
+  <link rel="stylesheet" href="./css/cart.css">
+  <script src="./js/auth.js"></script>
+  <script src="./js/cart.js"></script>
+  <script src="./js/payment.js"></script>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Eventra</div>
+
+      <nav class="menu" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="categories.html">Categories</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-buttons">
+        <button class="btn btn-outline" id="loginBtn">Sign In</button>
+        <button class="btn btn-primary" id="signupBtn">Get Started</button>
+        <button class="hamburger" id="hamburger">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="cart-container">
+      <div class="back-nav">
+        <a href="categories.html">&larr; Continue Shopping</a>
+      </div>
+      
+      <h1>Shopping Cart</h1>
+      
+      <div class="cart-content">
+        <div class="cart-items" id="cartItems">
+          <!-- Cart items will be populated by JavaScript -->
+        </div>
+        
+        <div class="cart-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-row">
+            <span>Subtotal:</span>
+            <span id="subtotal">₹0</span>
+          </div>
+          <div class="summary-row">
+            <span>Delivery:</span>
+            <span>₹500</span>
+          </div>
+          <div class="summary-row">
+            <span>Tax (18%):</span>
+            <span id="tax">₹0</span>
+          </div>
+          <div class="summary-total">
+            <span>Total:</span>
+            <span id="total">₹0</span>
+          </div>
+          <button class="btn btn-primary btn-lg checkout-btn" id="checkoutBtn">
+            Proceed to Checkout
+          </button>
+        </div>
+      </div>
+      
+      <div class="empty-cart" id="emptyCart" style="display: none;">
+        <div class="empty-cart-content">
+          <div class="empty-icon">🛒</div>
+          <h2>Your cart is empty</h2>
+          <p>Looks like you haven't added any items to your cart yet.</p>
+          <a href="categories.html" class="btn btn-primary">Start Shopping</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    class CartPage {
+      constructor() {
+        this.init();
+      }
+
+      init() {
+        this.renderCart();
+        this.setupEventListeners();
+      }
+
+      renderCart() {
+        const cartItems = window.shoppingCart.items;
+        const cartItemsContainer = document.getElementById('cartItems');
+        const emptyCart = document.getElementById('emptyCart');
+        const cartContent = document.querySelector('.cart-content');
+
+        if (cartItems.length === 0) {
+          cartContent.style.display = 'none';
+          emptyCart.style.display = 'block';
+          return;
+        }
+
+        cartContent.style.display = 'grid';
+        emptyCart.style.display = 'none';
+
+        cartItemsContainer.innerHTML = cartItems.map(item => `
+          <div class="cart-item" data-id="${item.id}">
+            <img src="${item.image}" alt="${item.title}">
+            <div class="item-details">
+              <h4>${item.title}</h4>
+              <p class="item-category">${item.category}</p>
+              <p class="item-price">${item.price}</p>
+            </div>
+            <div class="quantity-controls">
+              <button class="quantity-btn minus" data-id="${item.id}">-</button>
+              <span class="quantity">${item.quantity}</span>
+              <button class="quantity-btn plus" data-id="${item.id}">+</button>
+            </div>
+            <div class="item-total">
+              ₹${(parseFloat(item.price.replace(/[^\d.]/g, '')) * item.quantity).toLocaleString('en-IN')}
+            </div>
+            <button class="remove-item" data-id="${item.id}">×</button>
+          </div>
+        `).join('');
+
+        this.updateSummary();
+      }
+
+      updateSummary() {
+        const subtotal = window.shoppingCart.getTotal();
+        const delivery = 500;
+        const tax = subtotal * 0.18;
+        const total = subtotal + delivery + tax;
+
+        document.getElementById('subtotal').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
+        document.getElementById('tax').textContent = `₹${tax.toLocaleString('en-IN')}`;
+        document.getElementById('total').textContent = `₹${total.toLocaleString('en-IN')}`;
+      }
+
+      setupEventListeners() {
+        // Quantity controls
+        document.addEventListener('click', (e) => {
+          if (e.target.classList.contains('quantity-btn')) {
+            const itemId = e.target.dataset.id;
+            const isPlus = e.target.classList.contains('plus');
+            const quantitySpan = e.target.parentElement.querySelector('.quantity');
+            const currentQuantity = parseInt(quantitySpan.textContent);
+            
+            const newQuantity = isPlus ? currentQuantity + 1 : currentQuantity - 1;
+            
+            if (newQuantity > 0) {
+              window.shoppingCart.updateQuantity(itemId, newQuantity);
+              this.renderCart();
+            }
+          }
+        });
+
+        // Remove item
+        document.addEventListener('click', (e) => {
+          if (e.target.classList.contains('remove-item')) {
+            const itemId = e.target.dataset.id;
+            window.shoppingCart.removeItem(itemId);
+            this.renderCart();
+          }
+        });
+
+        // Checkout
+        document.getElementById('checkoutBtn').addEventListener('click', () => {
+          if (!window.authSystem.isLoggedIn()) {
+            alert('Please login to proceed with checkout');
+            window.location.href = 'login.html';
+            return;
+          }
+
+          const bookingData = {
+            items: window.shoppingCart.items,
+            totalAmount: window.shoppingCart.getTotal() + 500 + (window.shoppingCart.getTotal() * 0.18)
+          };
+
+          window.paymentSystem.showPaymentModal(bookingData);
+        });
+      }
+    }
+
+    // Initialize cart page
+    document.addEventListener('DOMContentLoaded', () => {
+      new CartPage();
+    });
+
+    // Navigation
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      if (window.authSystem.isLoggedIn()) {
+        window.authSystem.showUserDashboard();
+      } else {
+        window.location = "login.html";
+      }
+    });
+    
+    document.getElementById('signupBtn').addEventListener('click', () => {
+      if (window.authSystem.isLoggedIn()) {
+        window.authSystem.logout();
+      } else {
+        window.location = "signup.html";
+      }
+    });
+  </script>
+</body>
+</html>

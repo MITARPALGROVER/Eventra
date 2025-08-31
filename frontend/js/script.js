@@ -1,3 +1,11 @@
+      // Initialize auth system when DOM is loaded
+      document.addEventListener('DOMContentLoaded', () => {
+        // Auth system should already be initialized
+        if (window.authSystem) {
+          window.authSystem.updateUIBasedOnAuth();
+        }
+      });
+
       // Mobile menu toggle (simple demo)
       const hamburger = document.getElementById('hamburger');
       const nav = document.querySelector('.menu');
@@ -26,12 +34,13 @@
     //   });
 
       // Example sign-in click (demo)
-      document.getElementById('loginBtn').addEventListener('click', ()=>{
-        window.location = "login.html";
-      });
-            document.getElementById('signupBtn').addEventListener('click', ()=>{
-        window.location = "signup.html";
-      });
+      // Login/Signup buttons are now handled by auth system
+      // document.getElementById('loginBtn').addEventListener('click', ()=>{
+      //   window.location = "login.html";
+      // });
+      // document.getElementById('signupBtn').addEventListener('click', ()=>{
+      //   window.location = "signup.html";
+      // });
 
       // Scroll Animation Observer
       const observerOptions = {
