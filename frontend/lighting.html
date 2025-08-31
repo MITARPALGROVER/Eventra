@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Premium Lighting - Eventra</title>
+  <link rel="stylesheet" href="./css/navbar.css">
+  <link rel="stylesheet" href="./css/category-detail.css">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Eventra</div>
+
+      <nav class="menu" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="categories.html">Categories</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-buttons">
+        <button class="btn btn-outline" id="loginBtn">Sign In</button>
+        <button class="btn btn-primary" id="signupBtn">Get Started</button>
+        <button class="hamburger" id="hamburger">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="inner-container">
+      <div class="back-nav">
+        <a href="categories.html">&larr; Back to Categories</a>
+      </div>
+      
+      <div class="category-header">
+        <div>
+          <h1>Premium Indian Lighting</h1>
+          <p class="category-description">Elegant lighting solutions for Indian weddings, festivals, and cultural events to create the perfect atmosphere</p>
+        </div>
+        <div class="item-count">92 items available</div>
+      </div>
+
+    <div class="filter-bar">
+      <div class="filter-section">
+        <button class="filter-button" id="showFiltersBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6H20M7 12H17M9 18H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Lighting Filters
+        </button>
+        <div class="view-toggle">
+          <button class="view-button active" data-view="grid">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 3H10V10H3V3ZM14 3H21V10H14V3ZM3 14H10V21H3V14ZM14 14H21V21H14V14Z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </button>
+          <button class="view-button" data-view="list">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 5H21M3 12H21M3 19H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="sort-section">
+        <span>Sort by:</span>
+        <select id="sortOptions">
+          <option>Featured</option>
+          <option>Hourly Rate: Low to High</option>
+          <option>Hourly Rate: High to Low</option>
+          <option>Rating</option>
+          <option>Newest Arrivals</option>
+          <option>Brightness Level</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="filter-panel" id="filterPanel">
+      <div class="filter-groups">
+        <div class="filter-group">
+          <h4>Lighting Type</h4>
+          <div class="filter-options">
+            <label><input type="checkbox" /> Chandeliers</label>
+            <label><input type="checkbox" /> String Lights</label>
+            <label><input type="checkbox" /> LED Panels</label>
+            <label><input type="checkbox" /> Spotlights</label>
+            <label><input type="checkbox" /> Diya & Traditional</label>
+            <label><input type="checkbox" /> Projection</label>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h4>Occasion</h4>
+          <div class="filter-options">
+            <label><input type="checkbox" /> Wedding</label>
+            <label><input type="checkbox" /> Diwali</label>
+            <label><input type="checkbox" /> Corporate Event</label>
+            <label><input type="checkbox" /> Sangeet</label>
+            <label><input type="checkbox" /> Mehndi</label>
+            <label><input type="checkbox" /> Reception</label>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h4>Rental Period</h4>
+          <div class="filter-options">
+            <label><input type="checkbox" /> 4-8 Hours</label>
+            <label><input type="checkbox" /> 24 Hours</label>
+            <label><input type="checkbox" /> 2-3 Days</label>
+            <label><input type="checkbox" /> Weekly</label>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h4>Price Range (per hour)</h4>
+          <div class="filter-options price-range">
+            <input
+              type="range"
+              min="500"
+              max="5000"
+              value="2000"
+              id="priceRange"
+            />
+            <div class="price-labels">
+              <span>₹500</span>
+              <span id="priceValue">₹2,000</span>
+              <span>₹5,000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="filter-actions">
+        <button class="btn-apply">Apply Filters</button>
+        <button class="btn-reset">Reset</button>
+      </div>
+    </div>
+
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://5.imimg.com/data5/SELLER/Default/2021/1/QL/CQ/LI/37372264/crystal-jhoomer-chandelier-light-500x500.jpg" alt="Royal Jhumar Chandelier">
+          <span class="featured-tag">Featured</span>
+          <button class="favorite-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" fill="none" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-category">Chandeliers</span>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(47)</span>
+            </div>
+          </div>
+          <h3 class="product-title">Royal Jhumar Crystal Chandelier</h3>
+          <div class="product-price">₹2,800/hr</div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/decorative-light/j/b/7/20-1-yard-car-02-radiance-point-original-imagnt4nnkzejbzq.jpeg" alt="Traditional Marigold String Lights">
+          <button class="favorite-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" fill="none" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-category">String Lights</span>
+            <div class="product-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-count">(32)</span>
+            </div>
+          </div>
+          <h3 class="product-title">Marigold Flower String Lights (20m)</h3>
+          <div class="product-price">₹1,200/hr</div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/YG/GK/QC/16891529/led-wall-light-crystal-lightings.jpeg" alt="LED Paisley Wall Lights">
+          <button class="favorite-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" fill="none" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-category">Wall Lights</span>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(29)</span>
+            </div>
+          </div>
+          <h3 class="product-title">LED Paisley Pattern Wall Lights</h3>
+          <div class="product-price">₹1,850/hr</div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://5.imimg.com/data5/SELLER/Default/2023/5/308526587/HD/XC/QZ/151043507/traditional-brass-diya-stand.jpg" alt="Traditional Brass Diya Set">
+          <span class="featured-tag">Featured</span>
+          <button class="favorite-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" fill="none" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-category">Traditional</span>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(56)</span>
+            </div>
+          </div>
+          <h3 class="product-title">Traditional Brass Diya Set (50 pieces)</h3>
+          <div class="product-price">₹900/hr</div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://5.imimg.com/data5/SELLER/Default/2023/1/KT/YN/AD/54296627/led-rgb-stage-light.jpg" alt="RGB Stage Lights">
+          <button class="favorite-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" fill="none" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-category">Stage Lighting</span>
+            <div class="product-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-count">(38)</span>
+            </div>
+          </div>
+          <h3 class="product-title">Professional RGB Stage Light Set</h3>
+          <div class="product-price">₹3,500/hr</div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://5.imimg.com/data5/SELLER/Default/2023/2/QX/BT/CA/147554168/laser-projector-light.jpg" alt="Laser Projector">
+          <button class="favorite-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" fill="none" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-category">Projection</span>
+            <div class="product-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-count">(24)</span>
+            </div>
+          </div>
+          <h3 class="product-title">Laser Pattern Projector System</h3>
+          <div class="product-price">₹2,750/hr</div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </div>
+
+      <!-- Product 7 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://5.imimg.com/data5/ANDROID/Default/2023/1/PP/CD/WU/7509977/product-jpeg-500x500.jpg" alt="LED Toran Lights">
+          <button class="favorite-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" fill="none" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-category">Decorative</span>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(42)</span>
+            </div>
+          </div>
+          <h3 class="product-title">LED Toran Door Hanging Lights</h3>
+          <div class="product-price">₹1,100/hr</div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://m.media-amazon.com/images/I/71Vnwfs3IaL._AC_UF894,1000_QL80_.jpg" alt="Hanging Moroccan Lanterns">
+          <span class="featured-tag">Featured</span>
+          <button class="favorite-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" fill="none" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-category">Lanterns</span>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(31)</span>
+            </div>
+          </div>
+          <h3 class="product-title">Hanging Moroccan Style Lanterns (Set of 10)</h3>
+          <div class="product-price">₹1,500/hr</div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="load-more">
+      <button id="loadMoreBtn">Load More Products</button>
+    </div>
+    
+    <div class="pagination">
+      <button class="pagination-button active">1</button>
+      <button class="pagination-button">2</button>
+      <button class="pagination-button">3</button>
+      <button class="pagination-button">4</button>
+      <span class="pagination-ellipsis">...</span>
+      <button class="pagination-button">10</button>
+      <button class="pagination-next">
+        Next
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9 5l7 7-7 7"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">Eventra</div>
+        <p>Premium event rentals for unforgettable occasions</p>
+      </div>
+      <div class="footer-links">
+        <div>© 2025 Eventra. All rights reserved.</div>
+        <div>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/script.js"></script>
+  <script>
+    // Show/hide filters panel
+    document.getElementById('showFiltersBtn').addEventListener('click', function() {
+      const filterPanel = document.getElementById('filterPanel');
+      filterPanel.classList.toggle('active');
+    });
+    
+    // View toggle functionality
+    document.querySelectorAll('.view-button').forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.view-button').forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        const view = button.getAttribute('data-view');
+        const productsContainer = document.querySelector('.products-grid');
+        
+        if (view === 'list') {
+          productsContainer.classList.add('list-view');
+        } else {
+          productsContainer.classList.remove('list-view');
+        }
+      });
+    });
+
+    // Favorite button toggle
+    document.querySelectorAll('.favorite-button').forEach(button => {
+      button.addEventListener('click', () => {
+        button.classList.toggle('active');
+        const path = button.querySelector('path');
+        if (button.classList.contains('active')) {
+          path.setAttribute('fill', 'currentColor');
+        } else {
+          path.setAttribute('fill', 'none');
+        }
+      });
+    });
+
+    // Price range slider
+    const priceRange = document.getElementById('priceRange');
+    const priceValue = document.getElementById('priceValue');
+    
+    if (priceRange && priceValue) {
+      priceRange.addEventListener('input', function() {
+        const value = parseInt(this.value).toLocaleString('en-IN');
+        priceValue.textContent = `₹${value}`;
+      });
+    }
+    
+    // Load more button
+    document.getElementById('loadMoreBtn').addEventListener('click', function() {
+      // This would typically load more products via AJAX
+      alert('This would load more products in a real application.');
+    });
+    
+    // Pagination functionality
+    document.querySelectorAll('.page-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Remove active class from all links
+        document.querySelectorAll('.page-link').forEach(l => {
+          l.classList.remove('active');
+        });
+        
+        // Add active class to clicked link
+        this.classList.add('active');
+        
+        // In a real application, this would load the corresponding page of products
+        const page = this.textContent;
+        if (page !== '...' && page !== '«' && page !== '»') {
+          console.log(`Loading page ${page}`);
+          // This would fetch and display products for the selected page
+        } else if (page === '«') {
+          console.log('Previous page');
+          // Navigate to previous page
+        } else if (page === '»') {
+          console.log('Next page');
+          // Navigate to next page
+        }
+      });
+    });
+    
+    // Apply and Reset filters functionality
+    document.querySelector('.btn-apply').addEventListener('click', function() {
+      // Get all checked checkboxes
+      const checkedBoxes = document.querySelectorAll('.filter-options input[type="checkbox"]:checked');
+      const selectedTypes = [];
+      const selectedOccasions = [];
+      const selectedPeriods = [];
+      const priceValue = parseInt(document.getElementById('priceRange').value);
+      
+      // Collect selected values
+      checkedBoxes.forEach(checkbox => {
+        const filterGroup = checkbox.closest('.filter-group');
+        const groupTitle = filterGroup.querySelector('h4').textContent;
+        const optionValue = checkbox.parentNode.textContent.trim();
+        
+        if (groupTitle === 'Lighting Type') {
+          selectedTypes.push(optionValue);
+        } else if (groupTitle === 'Occasion') {
+          selectedOccasions.push(optionValue);
+        } else if (groupTitle === 'Rental Period') {
+          selectedPeriods.push(optionValue);
+        }
+      });
+      
+      // In a real application, this would filter the products
+      console.log('Applying filters:');
+      console.log('Types:', selectedTypes);
+      console.log('Occasions:', selectedOccasions);
+      console.log('Rental Periods:', selectedPeriods);
+      console.log('Max Price:', priceValue);
+      
+      // For demo purposes, show a message
+      alert('Filters applied. In a real application, this would filter the products based on your selections.');
+    });
+    
+    document.querySelector('.btn-reset').addEventListener('click', function() {
+      // Reset checkboxes
+      document.querySelectorAll('.filter-options input[type="checkbox"]').forEach(checkbox => {
+        checkbox.checked = false;
+      });
+      
+      // Reset price range
+      const priceRange = document.getElementById('priceRange');
+      if (priceRange) {
+        priceRange.value = 2000;
+        document.getElementById('priceValue').textContent = '₹2,000';
+      }
+      
+      // In a real application, this would reset the product display
+      console.log('Filters reset');
+      alert('All filters have been reset.');
+    });
+    
+    // Sort functionality
+    document.getElementById('sortOptions').addEventListener('change', function() {
+      const sortValue = this.value;
+      console.log(`Sorting by: ${sortValue}`);
+      
+      // In a real application, this would sort the products based on the selected option
+      // For this demo, just display an alert
+      alert(`Products would be sorted by "${sortValue}" in a real application.`);
+      
+      // Example of how sorting might work in a real application:
+      /*
+      const productsGrid = document.querySelector('.products-grid');
+      const products = Array.from(productsGrid.querySelectorAll('.product-card'));
+      
+      products.sort((a, b) => {
+        const priceA = parseInt(a.querySelector('.price-amount').textContent.replace(/[^\d]/g, ''));
+        const priceB = parseInt(b.querySelector('.price-amount').textContent.replace(/[^\d]/g, ''));
+        
+        if (sortValue === 'Hourly Rate: Low to High') {
+          return priceA - priceB;
+        } else if (sortValue === 'Hourly Rate: High to Low') {
+          return priceB - priceA;
+        }
+        // Other sort options would be implemented here
+      });
+      
+      // Clear and re-append sorted products
+      productsGrid.innerHTML = '';
+      products.forEach(product => {
+        productsGrid.appendChild(product);
+      });
+      */
+    });
+
+    // Navigation buttons
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      window.location = "login.html";
+    });
+    
+    document.getElementById('signupBtn').addEventListener('click', () => {
+      window.location = "signup.html";
+    });
+
+    // Mobile menu
+    document.getElementById('hamburger').addEventListener('click', () => {
+      const menu = document.querySelector('.menu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+      menu.style.flexDirection = 'column';
+      menu.style.gap = '14px';
+      menu.style.position = 'absolute';
+      menu.style.top = '68px';
+      menu.style.left = '0';
+      menu.style.right = '0';
+      menu.style.background = 'rgba(255,255,255,.96)';
+      menu.style.padding = '16px 20px';
+      menu.style.borderBottom = '1px solid #ececf2';
+    });
+
+    // Favorite button functionality
+    document.querySelectorAll('.fav-button').forEach(button => {
+      button.addEventListener('click', function() {
+        this.classList.toggle('active');
+        const isFavorite = this.classList.contains('active');
+        const productName = this.closest('.product-card').querySelector('.product-title').textContent;
+        
+        if (isFavorite) {
+          this.innerHTML = '<i class="fas fa-heart"></i>';
+          // In a real app, you'd save this to the user's favorites
+        } else {
+          this.innerHTML = '<i class="far fa-heart"></i>';
+          // In a real app, you'd remove this from the user's favorites
+        }
+      });
+    });
+
+    // View details button
+    document.querySelectorAll('.view-details-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const productName = this.closest('.product-card').querySelector('.product-title').textContent;
+        alert(`Viewing details for ${productName}`);
+        // In a real application, this would navigate to the product detail page
+      });
+    });
+  </script>
+</body>
+</html>

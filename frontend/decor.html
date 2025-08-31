@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Event Decor Items - Eventra</title>
+  <link rel="stylesheet" href="./css/navbar.css">
+  <link rel="stylesheet" href="./css/category-detail.css">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Eventra</div>
+
+      <nav class="menu" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="categories.html">Categories</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-buttons">
+        <button class="btn btn-outline" id="loginBtn">Sign In</button>
+        <button class="btn btn-primary" id="signupBtn">Get Started</button>
+        <button class="hamburger" id="hamburger">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="inner-container">
+      <div class="back-nav">
+        <a href="categories.html">&larr; Back to Categories</a>
+      </div>
+      
+      <div class="category-header">
+        <div>
+          <h1>Event Decor Items</h1>
+          <p class="category-description">Beautiful decorative items for Indian weddings, festivals, receptions, and cultural events</p>
+        </div>
+        <div class="item-count">87 items available</div>
+      </div>
+
+    <div class="filter-bar">
+      <div class="filter-section">
+        <button class="filter-button" id="showFiltersBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6H20M7 12H17M9 18H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Decor Filters
+        </button>
+        <div class="view-toggle">
+          <button class="view-button active" data-view="grid">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 3H10V10H3V3ZM14 3H21V10H14V3ZM3 14H10V21H3V14ZM14 14H21V21H14V14Z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </button>
+          <button class="view-button" data-view="list">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 5H21M3 12H21M3 19H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="sort-section">
+        <span>Sort by:</span>
+        <select id="sortOptions">
+          <option>Featured</option>
+          <option>Daily Rate: Low to High</option>
+          <option>Daily Rate: High to Low</option>
+          <option>Rating</option>
+          <option>Newest Arrivals</option>
+          <option>Popularity</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="filter-panel" id="filterPanel">
+      <div class="filter-groups">
+        <div class="filter-group">
+          <h4>Decor Type</h4>
+          <div class="filter-options">
+            <label><input type="checkbox" /> Floral Arrangements</label>
+            <label><input type="checkbox" /> Backdrops & Curtains</label>
+            <label><input type="checkbox" /> Table Centerpieces</label>
+            <label><input type="checkbox" /> Mandap Decorations</label>
+            <label><input type="checkbox" /> Entrance Decor</label>
+            <label><input type="checkbox" /> Traditional Items</label>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h4>Occasion</h4>
+          <div class="filter-options">
+            <label><input type="checkbox" /> Wedding</label>
+            <label><input type="checkbox" /> Reception</label>
+            <label><input type="checkbox" /> Mehendi</label>
+            <label><input type="checkbox" /> Sangeet</label>
+            <label><input type="checkbox" /> Diwali & Festivals</label>
+            <label><input type="checkbox" /> Corporate Events</label>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h4>Colors</h4>
+          <div class="filter-options">
+            <label><input type="checkbox" /> Red & Gold</label>
+            <label><input type="checkbox" /> Pastels</label>
+            <label><input type="checkbox" /> White & Silver</label>
+            <label><input type="checkbox" /> Multicolor</label>
+            <label><input type="checkbox" /> Green & Yellow</label>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h4>Price Range (per day)</h4>
+          <div class="filter-options price-range">
+            <input
+              type="range"
+              min="500"
+              max="10000"
+              value="3000"
+              id="priceRange"
+            />
+            <div class="price-labels">
+              <span>₹500</span>
+              <span id="priceValue">₹3,000</span>
+              <span>₹10,000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="filter-actions">
+        <button class="btn-apply">Apply Filters</button>
+        <button class="btn-reset">Reset</button>
+      </div>
+    </div>
+
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://5.imimg.com/data5/SELLER/Default/2021/11/QR/EB/DJ/23451444/artificial-backdrop-flower-panel-500x500.jpg" alt="Floral Backdrop">
+          <span class="featured-tag">Featured</span>
+          <button class="favorite-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" fill="none" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-category">Backdrops</span>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(56)</span>
+            </div>
+          </div>
+          <h3 class="product-title">Premium Floral Backdrop Panel (8ft x 8ft)</h3>
+          <div class="product-price">₹8,500/day</div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://5.imimg.com/data5/SELLER/Default/2021/9/XQ/CF/YI/106610097/artificial-ganesha-statue-for-decoration-500x500.jpg" alt="Ganesha Statue">
+          <button class="favorite-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" fill="none" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-category">Traditional Items</span>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(48)</span>
+            </div>
+          </div>
+          <h3 class="product-title">Decorative Ganesha Statue (3ft)</h3>
+          <div class="product-price">₹2,500/day</div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://5.imimg.com/data5/SELLER/Default/2022/11/WS/MI/QN/142122127/mehndi-decoration-items-500x500.jpg" alt="Mehndi Decor Set">
+          <button class="favorite-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" fill="none" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-category">Mehendi</span>
+            <div class="product-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-count">(37)</span>
+            </div>
+          </div>
+          <h3 class="product-title">Complete Mehndi Ceremony Decoration Set</h3>
+          <div class="product-price">₹5,500/day</div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://5.imimg.com/data5/SELLER/Default/2022/1/AZ/YJ/VV/11830918/wedding-mandap-decoration-500x500.jpeg" alt="Mandap Set">
+          <span class="featured-tag">Featured</span>
+          <button class="favorite-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" fill="none" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-category">Mandap Decorations</span>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(65)</span>
+            </div>
+          </div>
+          <h3 class="product-title">Traditional Wedding Mandap Set</h3>
+          <div class="product-price">₹9,500/day</div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://5.imimg.com/data5/SELLER/Default/2021/1/QR/TI/JM/30103096/table-centerpiece-wedding-crystal-candle-holder-500x500.jpg" alt="Crystal Centerpieces">
+          <button class="favorite-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" fill="none" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-category">Table Centerpieces</span>
+            <div class="product-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-count">(42)</span>
+            </div>
+          </div>
+          <h3 class="product-title">Crystal Candle Holder Centerpieces (Set of 10)</h3>
+          <div class="product-price">₹3,200/day</div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://5.imimg.com/data5/ANDROID/Default/2023/7/323393969/ZI/QR/IY/70428226/product-jpeg-500x500.jpg" alt="Wedding Welcome Gate">
+          <button class="favorite-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" fill="none" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-category">Entrance Decor</span>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(51)</span>
+            </div>
+          </div>
+          <h3 class="product-title">Decorative Wedding Welcome Gate</h3>
+          <div class="product-price">₹7,800/day</div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </div>
+
+      <!-- Product 7 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://5.imimg.com/data5/SELLER/Default/2021/1/OT/NC/BZ/95605392/diwali-decoration-items-500x500.jpg" alt="Diwali Decoration Set">
+          <button class="favorite-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" fill="none" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-category">Festival Decor</span>
+            <div class="product-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-count">(34)</span>
+            </div>
+          </div>
+          <h3 class="product-title">Complete Diwali Decoration Set</h3>
+          <div class="product-price">₹4,200/day</div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://5.imimg.com/data5/SELLER/Default/2022/3/BK/CU/EP/13317078/artificial-marigold-flower-decoration-500x500.jpg" alt="Marigold Garlands">
+          <span class="featured-tag">Featured</span>
+          <button class="favorite-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" fill="none" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-meta">
+            <span class="product-category">Floral Arrangements</span>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(58)</span>
+            </div>
+          </div>
+          <h3 class="product-title">Marigold Flower Garlands & Strings (50m)</h3>
+          <div class="product-price">₹3,800/day</div>
+          <button class="view-details-btn">View Details</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="load-more">
+      <button id="loadMoreBtn">Load More Products</button>
+    </div>
+    
+    <div class="pagination">
+      <button class="pagination-button active">1</button>
+      <button class="pagination-button">2</button>
+      <button class="pagination-button">3</button>
+      <button class="pagination-button">4</button>
+      <span class="pagination-ellipsis">...</span>
+      <button class="pagination-button">9</button>
+      <button class="pagination-next">
+        Next
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9 5l7 7-7 7"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">Eventra</div>
+        <p>Premium event rentals for unforgettable occasions</p>
+      </div>
+      <div class="footer-links">
+        <div>© 2025 Eventra. All rights reserved.</div>
+        <div>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/script.js"></script>
+  <script>
+    // Show/hide filters panel
+    document.getElementById('showFiltersBtn').addEventListener('click', function() {
+      const filterPanel = document.getElementById('filterPanel');
+      filterPanel.classList.toggle('active');
+    });
+    
+    // View toggle functionality
+    document.querySelectorAll('.view-button').forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.view-button').forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        const view = button.getAttribute('data-view');
+        const productsContainer = document.querySelector('.products-grid');
+        
+        if (view === 'list') {
+          productsContainer.classList.add('list-view');
+        } else {
+          productsContainer.classList.remove('list-view');
+        }
+      });
+    });
+
+    // Favorite button toggle
+    document.querySelectorAll('.favorite-button').forEach(button => {
+      button.addEventListener('click', () => {
+        button.classList.toggle('active');
+        const path = button.querySelector('path');
+        if (button.classList.contains('active')) {
+          path.setAttribute('fill', 'currentColor');
+        } else {
+          path.setAttribute('fill', 'none');
+        }
+      });
+    });
+
+    // Price range slider
+    const priceRange = document.getElementById('priceRange');
+    const priceValue = document.getElementById('priceValue');
+    
+    if (priceRange && priceValue) {
+      priceRange.addEventListener('input', function() {
+        const value = parseInt(this.value).toLocaleString('en-IN');
+        priceValue.textContent = `₹${value}`;
+      });
+    }
+    
+    // Load more button
+    document.getElementById('loadMoreBtn').addEventListener('click', function() {
+      // This would typically load more products via AJAX
+      alert('This would load more products in a real application.');
+    });
+    
+    // Pagination functionality
+    document.querySelectorAll('.pagination-button, .pagination-next').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Remove active class from all buttons
+        document.querySelectorAll('.pagination-button').forEach(l => {
+          l.classList.remove('active');
+        });
+        
+        // Add active class to clicked button if it's a page button
+        if (this.classList.contains('pagination-button')) {
+          this.classList.add('active');
+        }
+        
+        // In a real application, this would load the corresponding page of products
+        const page = this.textContent.trim();
+        if (page !== '...' && page !== 'Next') {
+          console.log(`Loading page ${page}`);
+          // This would fetch and display products for the selected page
+        } else if (page === 'Next') {
+          console.log('Next page');
+          // Navigate to next page
+          const activePage = document.querySelector('.pagination-button.active');
+          const nextPage = parseInt(activePage.textContent) + 1;
+          console.log(`Loading next page: ${nextPage}`);
+        }
+      });
+    });
+    
+    // Apply and Reset filters functionality
+    document.querySelector('.btn-apply').addEventListener('click', function() {
+      // Get all checked checkboxes
+      const checkedBoxes = document.querySelectorAll('.filter-options input[type="checkbox"]:checked');
+      const selectedTypes = [];
+      const selectedOccasions = [];
+      const selectedColors = [];
+      const priceValue = parseInt(document.getElementById('priceRange').value);
+      
+      // Collect selected values
+      checkedBoxes.forEach(checkbox => {
+        const filterGroup = checkbox.closest('.filter-group');
+        const groupTitle = filterGroup.querySelector('h4').textContent;
+        const optionValue = checkbox.parentNode.textContent.trim();
+        
+        if (groupTitle === 'Decor Type') {
+          selectedTypes.push(optionValue);
+        } else if (groupTitle === 'Occasion') {
+          selectedOccasions.push(optionValue);
+        } else if (groupTitle === 'Colors') {
+          selectedColors.push(optionValue);
+        }
+      });
+      
+      // In a real application, this would filter the products
+      console.log('Applying filters:');
+      console.log('Types:', selectedTypes);
+      console.log('Occasions:', selectedOccasions);
+      console.log('Colors:', selectedColors);
+      console.log('Max Price:', priceValue);
+      
+      // For demo purposes, show a message
+      alert('Filters applied. In a real application, this would filter the products based on your selections.');
+    });
+    
+    document.querySelector('.btn-reset').addEventListener('click', function() {
+      // Reset checkboxes
+      document.querySelectorAll('.filter-options input[type="checkbox"]').forEach(checkbox => {
+        checkbox.checked = false;
+      });
+      
+      // Reset price range
+      const priceRange = document.getElementById('priceRange');
+      if (priceRange) {
+        priceRange.value = 3000;
+        document.getElementById('priceValue').textContent = '₹3,000';
+      }
+      
+      // In a real application, this would reset the product display
+      console.log('Filters reset');
+      alert('All filters have been reset.');
+    });
+    
+    // Sort functionality
+    document.getElementById('sortOptions').addEventListener('change', function() {
+      const sortValue = this.value;
+      console.log(`Sorting by: ${sortValue}`);
+      
+      // In a real application, this would sort the products based on the selected option
+      // For this demo, just display an alert
+      alert(`Products would be sorted by "${sortValue}" in a real application.`);
+    });
+
+    // Mobile menu handling
+    document.getElementById('hamburger').addEventListener('click', function() {
+      const menu = document.querySelector('.menu');
+      menu.classList.toggle('active');
+      
+      if (!menu.style.display || menu.style.display === 'none') {
+        menu.style.display = 'flex';
+      } else {
+        menu.style.display = 'none';
+      }
+      
+      menu.style.flexDirection = 'column';
+      menu.style.gap = '14px';
+      menu.style.position = 'absolute';
+      menu.style.top = '68px';
+      menu.style.left = '0';
+      menu.style.right = '0';
+      menu.style.background = 'rgba(255,255,255,.96)';
+      menu.style.padding = '16px 20px';
+      menu.style.borderBottom = '1px solid #ececf2';
+    });
+
+    // View details button
+    document.querySelectorAll('.view-details-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const productName = this.closest('.product-card').querySelector('.product-title').textContent;
+        alert(`Viewing details for ${productName}`);
+        // In a real application, this would navigate to the product detail page
+      });
+    });
+  </script>
+</body>
+</html>

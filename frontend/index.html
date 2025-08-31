@@ -20,7 +20,7 @@
           <a href="contact.html">Contact</a>
         </nav>
 
-        <div style="display: flex; gap: 10px; align-items: center">
+        <div class="nav-buttons">
           <button class="btn btn-outline" id="loginBtn">Sign In</button>
           <button class="btn btn-primary" id="signupBtn">Get Started</button>
           <button class="hamburger" id="hamburger" aria-label="Open menu">
@@ -88,14 +88,12 @@
             </div>
           </div>
           <div class="glass-card planner-card">
-            <div style="display:flex;align-items:center;gap:18px;">
-              <img id="planner-image" src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?q=80&w=800&auto=format&fit=crop" alt="Profile" style="width:48px;height:48px;border-radius:12px;object-fit:cover;box-shadow:0 4px 16px rgba(0,0,0,0.14);">
+              <img id="planner-image" src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?q=80&w=800&auto=format&fit=crop" alt="Profile">
               <div class="planner-content">
                 <div class="planner-title"></div> <!-- Will be filled with random name -->
                 <div class="planner-stars">★ ★ ★ ★ ★</div>
                 <div class="planner-review"></div> <!-- Will be filled with random review -->
               </div>
-            </div>
     <script>
     // Simple image slider for hero-card
     let current = 0;
@@ -166,30 +164,57 @@
     const nameEl = document.querySelector('.planner-title');
     const reviewEl = document.querySelector('.planner-review');
     const imageEl = document.getElementById('planner-image');
+    const contentEl = document.querySelector('.planner-content');
     
-    function showRandomContent() {
-      const profileIdx = Math.floor(Math.random() * plannerProfiles.length);
-      const reviewIdx = Math.floor(Math.random() * reviews.length);
-      
-      const profile = plannerProfiles[profileIdx];
-      
-      nameEl.textContent = profile.name;
-      reviewEl.textContent = reviews[reviewIdx];
-      
-      // Add a fade effect for the image transition
-      imageEl.style.opacity = '0';
-      setTimeout(() => {
-        imageEl.src = profile.image;
-        imageEl.style.opacity = '1';
-      }, 500);
+    // Track used indexes to avoid repetition
+    let lastProfileIdx = -1;
+    let lastReviewIdx = -1;
+    
+    function getRandomIndex(max, lastIndex) {
+      let newIndex;
+      do {
+        newIndex = Math.floor(Math.random() * max);
+      } while (newIndex === lastIndex && max > 1);
+      return newIndex;
     }
     
-    // Set initial image opacity to 1
-    imageEl.style.opacity = '1';
+    function showRandomContent() {
+      // Fade out the content
+      contentEl.style.opacity = '0';
+      imageEl.style.opacity = '0';
+      
+      setTimeout(() => {
+        // Get random indexes (avoiding repetition)
+        const profileIdx = getRandomIndex(plannerProfiles.length, lastProfileIdx);
+        const reviewIdx = getRandomIndex(reviews.length, lastReviewIdx);
+        
+        // Update tracking variables
+        lastProfileIdx = profileIdx;
+        lastReviewIdx = reviewIdx;
+        
+        const profile = plannerProfiles[profileIdx];
+        
+        // Update content
+        nameEl.textContent = profile.name;
+        reviewEl.textContent = reviews[reviewIdx];
+        imageEl.src = profile.image;
+        
+        // Fade in content
+        setTimeout(() => {
+          contentEl.style.opacity = '1';
+          imageEl.style.opacity = '1';
+        }, 200);
+      }, 600);
+    }
     
-    // Show random content immediately and then every 5 seconds
+    // Set initial opacity values
+    imageEl.style.opacity = '1';
+    contentEl.style.opacity = '1';
+    contentEl.style.transition = 'opacity 0.6s ease-in-out';
+    
+    // Show random content immediately and then every 7 seconds
     showRandomContent();
-    setInterval(showRandomContent, 5000);
+    setInterval(showRandomContent, 7000);
     </script>
           </div>
         </div>
@@ -198,32 +223,6 @@
 
 
 
-    <!-- WHY CHOOSE US SECTION -->
-    <section class="section container scroll-section" id="why-us">
-      <h2>Why Choose Eventra</h2>
-      <div class="features-grid">
-        <div class="feature">
-          <div class="feature-icon">🌟</div>
-          <h3>Premium Quality</h3>
-          <p>Every item in our inventory is carefully selected for quality, style, and reliability.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">⚡</div>
-          <h3>Easy Booking</h3>
-          <p>Simple reservation system with real-time availability and instant confirmations.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">🔄</div>
-          <h3>Hassle-Free Setup</h3>
-          <p>Professional delivery, setup, and collection included with most rentals.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">💼</div>
-          <h3>Vendor Opportunities</h3>
-          <p>Join our platform as a vendor and grow your event rental business with us.</p>
-        </div>
-      </div>
-    </section>
 
     <!-- PREMIUM CATEGORIES -->
     <section class="section container scroll-section" id="categories">
@@ -276,31 +275,33 @@
     </section>
 
     <!-- TESTIMONIALS -->
-    <section class="section container scroll-section" id="testimonials">
-      <h2>What Our Customers Say</h2>
-      <div class="testimonials">
-        <div class="testimonial">
-          <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-          <p class="testimonial-text">"Eventra made organizing my daughter's wedding so much easier. The quality of their furniture and decor items exceeded our expectations."</p>
-          <div class="testimonial-author">
-            <strong>Sarah Johnson</strong>
-            <span>Wedding Planner</span>
+    <section class="section scroll-section" id="testimonials">
+      <div class="container">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonials">
+          <div class="testimonial">
+            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text">"Eventra made organizing my daughter's wedding so much easier. The quality of their furniture and decor items exceeded our expectations."</p>
+            <div class="testimonial-author">
+              <strong>Sarah Johnson</strong>
+              <span>Wedding Planner</span>
+            </div>
           </div>
-        </div>
-        <div class="testimonial">
-          <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-          <p class="testimonial-text">"As a vendor, joining Eventra has boosted my business significantly. Their platform makes it simple to showcase my inventory and manage bookings."</p>
-          <div class="testimonial-author">
-            <strong>Michael Rodriguez</strong>
-            <span>Sound Equipment Vendor</span>
+          <div class="testimonial">
+            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text">"As a vendor, joining Eventra has boosted my business significantly. Their platform makes it simple to showcase my inventory and manage bookings."</p>
+            <div class="testimonial-author">
+              <strong>Michael Rodriguez</strong>
+              <span>Sound Equipment Vendor</span>
+            </div>
           </div>
-        </div>
-        <div class="testimonial">
-          <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-          <p class="testimonial-text">"The variety of options and the ease of booking made Eventra our go-to for corporate events. Their customer service is outstanding."</p>
-          <div class="testimonial-author">
-            <strong>Emily Chen</strong>
-            <span>Corporate Event Coordinator</span>
+          <div class="testimonial">
+            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-text">"The variety of options and the ease of booking made Eventra our go-to for corporate events. Their customer service is outstanding."</p>
+            <div class="testimonial-author">
+              <strong>Emily Chen</strong>
+              <span>Corporate Event Coordinator</span>
+            </div>
           </div>
         </div>
       </div>
