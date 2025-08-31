@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Order Confirmation - Eventra</title>
+  <link rel="stylesheet" href="./css/navbar.css">
+  <link rel="stylesheet" href="./css/order-confirmation.css">
+  <script src="./js/auth.js"></script>
+  <script src="./js/search.js"></script>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Eventra</div>
+
+      <nav class="menu" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="categories.html">Categories</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-buttons">
+        <div class="cart-icon" onclick="window.location.href='cart.html'">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="m1 1 4 4 2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-count">0</span>
+        </div>
+        <button class="btn btn-outline" id="loginBtn">Sign In</button>
+        <button class="btn btn-primary" id="signupBtn">Get Started</button>
+        <button class="hamburger" id="hamburger">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="confirmation-container">
+      <div class="success-animation">
+        <div class="checkmark-circle">
+          <div class="checkmark">✓</div>
+        </div>
+      </div>
+      
+      <h1>Order Confirmed!</h1>
+      <p class="confirmation-message">Thank you for your booking. We've received your order and will contact you shortly to confirm the details.</p>
+      
+      <div class="order-details">
+        <h3>Order Details</h3>
+        <div class="detail-row">
+          <span>Order ID:</span>
+          <span id="orderId">EVT-2025-001234</span>
+        </div>
+        <div class="detail-row">
+          <span>Total Amount:</span>
+          <span id="totalAmount">₹16,076</span>
+        </div>
+        <div class="detail-row">
+          <span>Payment Status:</span>
+          <span class="status-paid">Paid</span>
+        </div>
+        <div class="detail-row">
+          <span>Event Date:</span>
+          <span id="eventDate">March 15, 2025</span>
+        </div>
+      </div>
+
+      <div class="next-steps">
+        <h3>What's Next?</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h4>Confirmation Call</h4>
+              <p>Our team will call you within 24 hours to confirm event details</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h4>Delivery & Setup</h4>
+              <p>We'll deliver and set up your items on the event date</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h4>Pickup</h4>
+              <p>After your event, we'll handle the pickup and cleaning</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn btn-primary" onclick="window.location.href='index.html'">
+          Back to Home
+        </button>
+        <button class="btn btn-ghost" onclick="window.location.href='categories.html'">
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">Eventra</div>
+        <p>Premium event rentals for unforgettable occasions</p>
+      </div>
+      <div class="footer-links">
+        <div>© 2025 Eventra. All rights reserved.</div>
+        <div>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      if (window.authSystem.isLoggedIn()) {
+        window.authSystem.showUserDashboard();
+      } else {
+        window.location = "login.html";
+      }
+    });
+    
+    document.getElementById('signupBtn').addEventListener('click', () => {
+      if (window.authSystem.isLoggedIn()) {
+        window.authSystem.logout();
+      } else {
+        window.location = "signup.html";
+      }
+    });
+
+    // Mobile menu
+    document.getElementById('hamburger').addEventListener('click', () => {
+      const menu = document.querySelector('.menu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+      menu.style.flexDirection = 'column';
+      menu.style.gap = '14px';
+      menu.style.position = 'absolute';
+      menu.style.top = '68px';
+      menu.style.left = '0';
+      menu.style.right = '0';
+      menu.style.background = 'rgba(255,255,255,.96)';
+      menu.style.padding = '16px 20px';
+      menu.style.borderBottom = '1px solid #ececf2';
+    });
+
+    // Load order details from URL parameters
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const orderId = urlParams.get('orderId');
+      const total = urlParams.get('total');
+      const eventDate = urlParams.get('eventDate');
+
+      if (orderId) {
+        document.getElementById('orderId').textContent = orderId;
+      }
+      if (total) {
+        document.getElementById('totalAmount').textContent = `₹${parseInt(total).toLocaleString('en-IN')}`;
+      }
+      if (eventDate) {
+        const date = new Date(eventDate);
+        document.getElementById('eventDate').textContent = date.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+      }
+    });
+  </script>
+</body>
+</html>

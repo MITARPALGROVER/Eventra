@@ -166,7 +166,11 @@
           </div>
           <h3 class="product-title">Premium Floral Backdrop Panel (8ft x 8ft)</h3>
           <div class="product-price">₹8,500/day</div>
-          <button class="view-details-btn">View Details</button>
+          <div class="product-actions">
+            <button class="view-details-btn">View Details</button>
+            <button class="add-to-cart-btn">Add to Cart</button>
+            <button class="book-now-btn">Book Now</button>
+          </div>
         </div>
       </div>
 
@@ -190,7 +194,11 @@
           </div>
           <h3 class="product-title">Decorative Ganesha Statue (3ft)</h3>
           <div class="product-price">₹2,500/day</div>
-          <button class="view-details-btn">View Details</button>
+          <div class="product-actions">
+            <button class="view-details-btn">View Details</button>
+            <button class="add-to-cart-btn">Add to Cart</button>
+            <button class="book-now-btn">Book Now</button>
+          </div>
         </div>
       </div>
 
@@ -214,7 +222,11 @@
           </div>
           <h3 class="product-title">Complete Mehndi Ceremony Decoration Set</h3>
           <div class="product-price">₹5,500/day</div>
-          <button class="view-details-btn">View Details</button>
+          <div class="product-actions">
+            <button class="view-details-btn">View Details</button>
+            <button class="add-to-cart-btn">Add to Cart</button>
+            <button class="book-now-btn">Book Now</button>
+          </div>
         </div>
       </div>
 
@@ -239,7 +251,11 @@
           </div>
           <h3 class="product-title">Traditional Wedding Mandap Set</h3>
           <div class="product-price">₹9,500/day</div>
-          <button class="view-details-btn">View Details</button>
+          <div class="product-actions">
+            <button class="view-details-btn">View Details</button>
+            <button class="add-to-cart-btn">Add to Cart</button>
+            <button class="book-now-btn">Book Now</button>
+          </div>
         </div>
       </div>
 
@@ -263,7 +279,11 @@
           </div>
           <h3 class="product-title">Crystal Candle Holder Centerpieces (Set of 10)</h3>
           <div class="product-price">₹3,200/day</div>
-          <button class="view-details-btn">View Details</button>
+          <div class="product-actions">
+            <button class="view-details-btn">View Details</button>
+            <button class="add-to-cart-btn">Add to Cart</button>
+            <button class="book-now-btn">Book Now</button>
+          </div>
         </div>
       </div>
 
@@ -287,7 +307,11 @@
           </div>
           <h3 class="product-title">Decorative Wedding Welcome Gate</h3>
           <div class="product-price">₹7,800/day</div>
-          <button class="view-details-btn">View Details</button>
+          <div class="product-actions">
+            <button class="view-details-btn">View Details</button>
+            <button class="add-to-cart-btn">Add to Cart</button>
+            <button class="book-now-btn">Book Now</button>
+          </div>
         </div>
       </div>
 
@@ -311,7 +335,11 @@
           </div>
           <h3 class="product-title">Complete Diwali Decoration Set</h3>
           <div class="product-price">₹4,200/day</div>
-          <button class="view-details-btn">View Details</button>
+          <div class="product-actions">
+            <button class="view-details-btn">View Details</button>
+            <button class="add-to-cart-btn">Add to Cart</button>
+            <button class="book-now-btn">Book Now</button>
+          </div>
         </div>
       </div>
 
@@ -336,7 +364,11 @@
           </div>
           <h3 class="product-title">Marigold Flower Garlands & Strings (50m)</h3>
           <div class="product-price">₹3,800/day</div>
-          <button class="view-details-btn">View Details</button>
+          <div class="product-actions">
+            <button class="view-details-btn">View Details</button>
+            <button class="add-to-cart-btn">Add to Cart</button>
+            <button class="book-now-btn">Book Now</button>
+          </div>
         </div>
       </div>
     </div>
@@ -563,9 +595,16 @@
     // View details button
     document.querySelectorAll('.view-details-btn').forEach(button => {
       button.addEventListener('click', function() {
-        const productName = this.closest('.product-card').querySelector('.product-title').textContent;
-        alert(`Viewing details for ${productName}`);
-        // In a real application, this would navigate to the product detail page
+       const productCard = this.closest('.product-card');
+       const productTitle = productCard.querySelector('.product-title').textContent;
+       
+       // Create product ID from title
+       const productId = productTitle.toLowerCase()
+         .replace(/[^a-z0-9\s]/g, '')
+         .replace(/\s+/g, '-');
+       
+       // Navigate to product detail page
+       window.location.href = `product-detail.html?id=${productId}&category=decor`;
       });
     });
   </script>

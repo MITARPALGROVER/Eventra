@@ -147,10 +147,11 @@ class ShoppingCart {
     const title = productCard.querySelector('.product-title').textContent;
     const price = productCard.querySelector('.product-price').textContent;
     const image = productCard.querySelector('img').src;
-    const category = productCard.querySelector('.product-category').textContent;
+    const categoryElement = productCard.querySelector('.product-category');
+    const category = categoryElement ? categoryElement.textContent : 'General';
     
     return {
-      id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+      id: title.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, '-') + '-' + Date.now(),
       title,
       price,
       image,
