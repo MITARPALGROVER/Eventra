@@ -56,6 +56,24 @@ class PaymentSystem {
               <strong>Total: ₹${bookingData.totalAmount.toLocaleString('en-IN')}</strong>
             </div>
           </div>
+
+          ${!bookingData.eventLocation ? `
+          <div class="address-section">
+            <h4>Event Details</h4>
+            <div class="form-group">
+              <label for="eventDate">Event Date</label>
+              <input type="date" id="eventDate" required>
+            </div>
+            <div class="form-group">
+              <label for="eventLocation">Event Location</label>
+              <textarea id="eventLocation" placeholder="Enter complete event address" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="specialRequests">Special Requirements (Optional)</label>
+              <textarea id="specialRequests" placeholder="Any special requirements or instructions"></textarea>
+            </div>
+          </div>
+          ` : ''}
           
           <div class="payment-methods">
             <h4>Payment Method</h4>
@@ -193,6 +211,24 @@ class PaymentSystem {
     paymentBtn.addEventListener('click', async () => {
       const selectedMethod = modal.querySelector('input[name="paymentMethod"]:checked').value;
       
+      // Collect address data if form exists
+      let addressData = {};
+      const eventDateInput = modal.querySelector('#eventDate');
+      const eventLocationInput = modal.querySelector('#eventLocation');
+      const specialRequestsInput = modal.querySelector('#specialRequests');
+      
+      if (eventDateInput && eventLocationInput) {
+        if (!eventDateInput.value || !eventLocationInput.value) {
+          alert('Please fill in all required event details.');
+          return;
+        }
+        addressData = {
+          eventDate: eventDateInput.value,
+          eventLocation: eventLocationInput.value,
+          specialRequests: specialRequestsInput.value || ''
+        };
+      }
+      
       // Show loading state
       const btnText = paymentBtn.querySelector('.btn-text');
       const btnLoading = paymentBtn.querySelector('.btn-loading');
@@ -206,9 +242,21 @@ class PaymentSystem {
           method: selectedMethod
         });
 
+        // Create booking with complete data
+        const completeBookingData = {
+          ...bookingData,
+          ...addressData,
+          transactionId: transaction.id
+        };
+
+        // Save booking if we have the booking system
+        if (window.bookingSystem && addressData.eventDate) {
+          window.bookingSystem.createBooking(completeBookingData);
+        }
+
         // Payment successful
         closeModal();
-        this.showPaymentSuccess(transaction, bookingData);
+        this.showPaymentSuccess(transaction, completeBookingData);
         
         // Clear cart if items were from cart
         if (window.shoppingCart) {

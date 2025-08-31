@@ -240,7 +240,21 @@ class BookingSystem {
       try {
         const booking = this.createBooking(bookingData);
         closeModal();
-        this.showBookingConfirmation(booking);
+        
+        // Show payment modal instead of direct confirmation
+        if (window.paymentSystem) {
+          const paymentData = {
+            items: booking.items,
+            totalAmount: booking.totalAmount,
+            bookingId: booking.id,
+            eventDate: booking.eventDate,
+            eventLocation: booking.eventLocation,
+            specialRequests: booking.specialRequests
+          };
+          window.paymentSystem.showPaymentModal(paymentData);
+        } else {
+          this.showBookingConfirmation(booking);
+        }
       } catch (error) {
         alert(error.message);
       }

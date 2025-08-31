@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Complete Payment - Eventra</title>
+  <link rel="stylesheet" href="./css/navbar.css">
+  <link rel="stylesheet" href="./css/payment.css">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Eventra</div>
+
+      <nav class="menu" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="categories.html">Categories</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-buttons">
+        <button class="btn btn-outline" id="loginBtn">Sign In</button>
+        <button class="btn btn-primary" id="signupBtn">Get Started</button>
+        <button class="hamburger" id="hamburger">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="payment-container">
+    <div class="payment-content">
+      <div class="payment-header">
+        <h1>Complete Payment</h1>
+        <p>Secure payment for your event rental order</p>
+      </div>
+
+      <div class="payment-layout">
+        <!-- Order Summary -->
+        <div class="order-summary">
+          <h2>Order Summary</h2>
+          <div class="summary-items" id="summaryItems">
+            <div class="summary-item">
+              <div class="item-info">
+                <span class="item-name">Maharaja Velvet Sofa</span>
+                <span class="item-quantity">x1</span>
+              </div>
+              <span class="item-price">₹2,500</span>
+            </div>
+            <div class="summary-item">
+              <div class="item-info">
+                <span class="item-name">Carved Wooden Jharokha</span>
+                <span class="item-quantity">x1</span>
+              </div>
+              <span class="item-price">₹1,800</span>
+            </div>
+            <div class="summary-item">
+              <div class="item-info">
+                <span class="item-name">Rajasthani Carved Table</span>
+                <span class="item-quantity">x1</span>
+              </div>
+              <span class="item-price">₹1,200</span>
+            </div>
+            <div class="summary-item">
+              <div class="item-info">
+                <span class="item-name">Tanjore Painting Frame</span>
+                <span class="item-quantity">x1</span>
+              </div>
+              <span class="item-price">₹750</span>
+            </div>
+            <div class="summary-item">
+              <div class="item-info">
+                <span class="item-name">Banarasi Diwan Set</span>
+                <span class="item-quantity">x1</span>
+              </div>
+              <span class="item-price">₹1,500</span>
+            </div>
+            <div class="summary-item">
+              <div class="item-info">
+                <span class="item-name">Banarasi Diwan Set</span>
+                <span class="item-quantity">x3</span>
+              </div>
+              <span class="item-price">₹4,500</span>
+            </div>
+            <div class="summary-item">
+              <div class="item-info">
+                <span class="item-name">Traditional Brass Set</span>
+                <span class="item-quantity">x1</span>
+              </div>
+              <span class="item-price">₹950</span>
+            </div>
+          </div>
+          
+          <div class="summary-total">
+            <div class="total-row">
+              <span>Subtotal:</span>
+              <span>₹13,200</span>
+            </div>
+            <div class="total-row">
+              <span>Service Fee:</span>
+              <span>₹1,320</span>
+            </div>
+            <div class="total-row">
+              <span>GST (18%):</span>
+              <span>₹1,556</span>
+            </div>
+            <div class="total-row total-final">
+              <span>Total:</span>
+              <span>₹16,076</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="payment-methods">
+          <h2>Payment Method</h2>
+          
+          <div class="payment-options">
+            <div class="payment-option">
+              <input type="radio" id="card" name="payment" value="card" checked>
+              <label for="card">
+                <div class="payment-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <path d="M2 10h20" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </div>
+                <span>Credit/Debit Card</span>
+              </label>
+            </div>
+
+            <div class="payment-option">
+              <input type="radio" id="upi" name="payment" value="upi">
+              <label for="upi">
+                <div class="payment-icon upi-icon">
+                  <img src="https://logoeps.com/wp-content/uploads/2018/03/upi-vector-logo.png" alt="UPI" width="24" height="24">
+                </div>
+                <span>UPI Payment</span>
+              </label>
+            </div>
+
+            <div class="payment-option">
+              <input type="radio" id="netbanking" name="payment" value="netbanking">
+              <label for="netbanking">
+                <div class="payment-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/>
+                    <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </div>
+                <span>Net Banking</span>
+              </label>
+            </div>
+
+            <div class="payment-option">
+              <input type="radio" id="wallet" name="payment" value="wallet">
+              <label for="wallet">
+                <div class="payment-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v5m18 0a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2z" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="16" cy="12" r="1" fill="currentColor"/>
+                </svg>
+                </div>
+                <span>Digital Wallets</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Card Payment Form -->
+          <div class="payment-form" id="cardForm">
+            <div class="form-group">
+              <label for="cardNumber">Card Number</label>
+              <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="expiryDate">Expiry Date</label>
+                <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5">
+              </div>
+              <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" placeholder="123" maxlength="3">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cardName">Cardholder Name</label>
+              <input type="text" id="cardName" placeholder="Enter your full name">
+            </div>
+          </div>
+
+          <!-- UPI Payment Form -->
+          <div class="payment-form" id="upiForm" style="display: none;">
+            <div class="form-group">
+              <label for="upiId">UPI ID</label>
+              <input type="text" id="upiId" placeholder="yourname@paytm">
+            </div>
+            <div class="upi-apps">
+              <div class="upi-app">
+                <img src="https://logoeps.com/wp-content/uploads/2018/03/paytm-vector-logo.png" alt="Paytm">
+                <span>Paytm</span>
+              </div>
+              <div class="upi-app">
+                <img src="https://logoeps.com/wp-content/uploads/2018/01/google-pay-vector-logo.png" alt="Google Pay">
+                <span>Google Pay</span>
+              </div>
+              <div class="upi-app">
+                <img src="https://logoeps.com/wp-content/uploads/2018/03/phonepe-vector-logo.png" alt="PhonePe">
+                <span>PhonePe</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Actions -->
+          <div class="payment-actions">
+            <button class="btn btn-secondary" onclick="history.back()">Go Back</button>
+            <button class="btn btn-primary" id="payNowBtn">Pay ₹16,076</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/script.js"></script>
+  <script src="./js/payment.js"></script>
+  <script>
+    // Initialize payment functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Payment method switching
+      const paymentOptions = document.querySelectorAll('input[name="payment"]');
+      const cardForm = document.getElementById('cardForm');
+      const upiForm = document.getElementById('upiForm');
+
+      paymentOptions.forEach(option => {
+        option.addEventListener('change', function() {
+          // Hide all forms
+          cardForm.style.display = 'none';
+          upiForm.style.display = 'none';
+
+          // Show selected form
+          if (this.value === 'card') {
+            cardForm.style.display = 'block';
+          } else if (this.value === 'upi') {
+            upiForm.style.display = 'block';
+          }
+        });
+      });
+
+      // Card number formatting
+      const cardNumberInput = document.getElementById('cardNumber');
+      cardNumberInput.addEventListener('input', function() {
+        let value = this.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+        let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+        this.value = formattedValue;
+      });
+
+      // Expiry date formatting
+      const expiryInput = document.getElementById('expiryDate');
+      expiryInput.addEventListener('input', function() {
+        let value = this.value.replace(/\D/g, '');
+        if (value.length >= 2) {
+          value = value.substring(0, 2) + '/' + value.substring(2, 4);
+        }
+        this.value = value;
+      });
+
+      // Pay now button
+      document.getElementById('payNowBtn').addEventListener('click', function() {
+        const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
+        
+        // Show processing state
+        this.disabled = true;
+        this.textContent = 'Processing...';
+        
+        // Simulate payment processing
+        setTimeout(() => {
+          alert('Payment successful! Your booking has been confirmed.');
+          // In a real app, redirect to confirmation page
+          window.location.href = 'index.html';
+        }, 2000);
+      });
+    });
+  </script>
+</body>
+</html>
