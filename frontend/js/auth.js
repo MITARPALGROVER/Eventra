@@ -109,7 +109,7 @@ class AuthSystem {
 
   // Show user dashboard (simple alert for now)
   showUserDashboard() {
-    alert(`Welcome ${this.currentUser.firstName}! Dashboard functionality would be implemented here.`);
+    window.location.href = 'user-dashboard.html';
   }
 
   // Add item to favorites
@@ -123,6 +123,9 @@ class AuthSystem {
     const userIndex = users.findIndex(u => u.id === this.currentUser.id);
     
     if (userIndex !== -1) {
+      if (!users[userIndex].favorites) {
+        users[userIndex].favorites = [];
+      }
       if (!users[userIndex].favorites.find(fav => fav.id === itemId)) {
         users[userIndex].favorites.push({ id: itemId, ...itemData, addedAt: new Date().toISOString() });
         localStorage.setItem('eventra_users', JSON.stringify(users));
@@ -142,10 +145,14 @@ class AuthSystem {
     const userIndex = users.findIndex(u => u.id === this.currentUser.id);
     
     if (userIndex !== -1) {
+       if (!users[userIndex].favorites) {
+         users[userIndex].favorites = [];
+       }
       users[userIndex].favorites = users[userIndex].favorites.filter(fav => fav.id !== itemId);
       localStorage.setItem('eventra_users', JSON.stringify(users));
       localStorage.setItem('eventra_current_user', JSON.stringify(users[userIndex]));
       this.currentUser = users[userIndex];
+     if (!this.currentUser.favorites) return false;
       return true;
     }
     return false;

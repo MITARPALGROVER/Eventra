@@ -256,7 +256,13 @@ class PaymentSystem {
 
         // Payment successful
         closeModal();
-        this.showPaymentSuccess(transaction, completeBookingData);
+        // Redirect to order confirmation page
+        const orderParams = new URLSearchParams({
+          orderId: transaction.id,
+          total: completeBookingData.totalAmount,
+          eventDate: completeBookingData.eventDate || ''
+        });
+        window.location.href = `order-confirmation.html?${orderParams.toString()}`;
         
         // Clear cart if items were from cart
         if (window.shoppingCart) {

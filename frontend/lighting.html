@@ -464,6 +464,22 @@
       });
     });
 
+    // View details button
+    document.querySelectorAll('.view-details-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const productCard = this.closest('.product-card');
+        const productTitle = productCard.querySelector('.product-title').textContent;
+        
+        // Create product ID from title
+        const productId = productTitle.toLowerCase()
+          .replace(/[^a-z0-9\s]/g, '')
+          .replace(/\s+/g, '-');
+        
+        // Navigate to product detail page
+        window.location.href = `product-detail.html?id=${productId}&category=lighting`;
+      });
+    });
+
     // Price range slider
     const priceRange = document.getElementById('priceRange');
     const priceValue = document.getElementById('priceValue');
@@ -640,9 +656,16 @@
     // View details button
     document.querySelectorAll('.view-details-btn').forEach(button => {
       button.addEventListener('click', function() {
-        const productName = this.closest('.product-card').querySelector('.product-title').textContent;
-        alert(`Viewing details for ${productName}`);
-        // In a real application, this would navigate to the product detail page
+        const productCard = this.closest('.product-card');
+        const productTitle = productCard.querySelector('.product-title').textContent;
+        
+        // Create product ID from title
+        const productId = productTitle.toLowerCase()
+          .replace(/[^a-z0-9\s]/g, '')
+          .replace(/\s+/g, '-');
+        
+        // Navigate to product detail page
+        window.location.href = `product-detail.html?id=${productId}&category=lighting`;
       });
     });
   </script>

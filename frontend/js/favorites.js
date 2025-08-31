@@ -82,7 +82,8 @@ class FavoritesManager {
     const title = productCard.querySelector('.product-title').textContent;
     const price = productCard.querySelector('.product-price').textContent;
     const image = productCard.querySelector('img').src;
-    const category = productCard.querySelector('.product-category').textContent;
+    const categoryElement = productCard.querySelector('.product-category');
+    const category = categoryElement ? categoryElement.textContent : 'General';
     
     return {
       title,

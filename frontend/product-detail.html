@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Details - Eventra</title>
+  <link rel="stylesheet" href="./css/navbar.css">
+  <link rel="stylesheet" href="./css/product-detail.css">
+  <link rel="stylesheet" href="./css/payment-modal.css">
+  <script src="./js/auth.js"></script>
+  <script src="./js/animations.js"></script>
+  <script src="./js/cart.js"></script>
+  <script src="./js/booking.js"></script>
+  <script src="./js/payment.js"></script>
+  <script src="./js/favorites.js"></script>
+  <script src="./js/search.js"></script>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Eventra</div>
+
+      <nav class="menu" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="categories.html">Categories</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-buttons">
+        <div class="cart-icon" onclick="window.location.href='cart.html'">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="m1 1 4 4 2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-count">0</span>
+        </div>
+        <button class="btn btn-outline" id="loginBtn">Sign In</button>
+        <button class="btn btn-primary" id="signupBtn">Get Started</button>
+        <button class="hamburger" id="hamburger">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="product-detail-wrapper">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="categories.html">Categories</a>
+        <span>/</span>
+        <a href="#" id="categoryLink">Furniture</a>
+        <span>/</span>
+        <span id="productName">Vintage Velvet Sofa</span>
+      </div>
+
+      <div class="product-detail-container">
+        <div class="product-gallery">
+          <div class="main-image">
+            <img id="mainProductImage" src="https://cpimg.tistatic.com/5553478/b/1/maharaja-wooden-sofa.jpg" alt="Product Image">
+            <button class="favorite-button-large">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" fill="none" stroke-width="2"/>
+              </svg>
+            </button>
+          </div>
+          <div class="thumbnail-gallery">
+            <img class="thumbnail active" src="https://cpimg.tistatic.com/5553478/b/1/maharaja-wooden-sofa.jpg" alt="Thumbnail 1">
+            <img class="thumbnail" src="https://m.media-amazon.com/images/I/6143l5UinSL._UF1000,1000_QL80_.jpg" alt="Thumbnail 2">
+            <img class="thumbnail" src="https://www.insaraf.com/cdn/shop/products/DSC_3887_eb0cd51d-3131-4df0-9cf8-daf24ec8e620_2048x.jpg?v=1556419293" alt="Thumbnail 3">
+            <img class="thumbnail" src="https://craftzone.in/backend/uploads/products/SKU0000001081/ebffdf8a3f1b5b7c5786677b09481cee.webp" alt="Thumbnail 4">
+          </div>
+        </div>
+
+        <div class="product-info">
+          <div class="product-category-badge" id="productCategory">Seating</div>
+          <h1 class="product-title" id="productTitle">Vintage Velvet Sofa</h1>
+          
+          <div class="product-rating">
+            <div class="stars">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star">★</span>
+            </div>
+            <span class="rating-text">4.9 (24 reviews)</span>
+            <span class="availability-badge available">Available</span>
+          </div>
+
+          <div class="product-price">
+            <span class="price-amount" id="productPrice">₹450</span>
+            <span class="price-period">/day</span>
+          </div>
+
+          <div class="product-description" id="productDescription">
+            An exquisite vintage velvet sofa that brings elegance and comfort to any event. 
+            Featuring rich burgundy upholstery and gold-finished legs, this piece is perfect 
+            for creating intimate seating areas at weddings, galas, and corporate events.
+          </div>
+
+          <div class="rental-options">
+            <h3>Rental Options</h3>
+            <div class="rental-controls">
+              <div class="control-group">
+                <label>Quantity</label>
+                <div class="quantity-selector">
+                  <button class="qty-btn minus">-</button>
+                  <input type="number" id="quantity" value="1" min="1" max="10">
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+              <div class="control-group">
+                <label>Rental Days</label>
+                <div class="quantity-selector">
+                  <button class="days-btn minus">-</button>
+                  <input type="number" id="rentalDays" value="3" min="1" max="30">
+                  <button class="days-btn plus">+</button>
+                </div>
+              </div>
+            </div>
+            <div class="total-calculation">
+              <span class="total-label">Total:</span>
+              <span class="total-amount" id="totalAmount">₹1350</span>
+              <span class="total-period">total</span>
+            </div>
+          </div>
+
+          <div class="action-buttons">
+            <button class="btn btn-primary btn-lg add-to-cart-btn">Add to Cart</button>
+            <button class="btn btn-secondary btn-lg book-now-btn">Book Now</button>
+          </div>
+
+          <div class="product-features">
+            <div class="feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12l2 2 4-4"></path>
+                <circle cx="12" cy="12" r="9"></circle>
+              </svg>
+              <span>Free Delivery</span>
+            </div>
+            <div class="feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <span>Damage Protection</span>
+            </div>
+            <div class="feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>24/7 Support</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-tabs">
+        <div class="tab-buttons">
+          <button class="tab-button active" data-tab="features">Features</button>
+          <button class="tab-button" data-tab="specifications">Specifications</button>
+          <button class="tab-button" data-tab="reviews">Reviews</button>
+        </div>
+
+        <div class="tab-content">
+          <div class="tab-panel active" id="features">
+            <h3>Product Features</h3>
+            <ul class="features-list">
+              <li>Premium velvet upholstery</li>
+              <li>Solid hardwood frame</li>
+              <li>Gold-finished metal legs</li>
+              <li>Seats up to 3 people comfortably</li>
+              <li>Professional cleaning included</li>
+              <li>Perfect for luxury events</li>
+            </ul>
+          </div>
+
+          <div class="tab-panel" id="specifications">
+            <h3>Specifications</h3>
+            <div class="specs-grid">
+              <div class="spec-item">
+                <span class="spec-label">Dimensions:</span>
+                <span class="spec-value">84" W x 36" D x 32" H</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Weight:</span>
+                <span class="spec-value">85 lbs</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Material:</span>
+                <span class="spec-value">Velvet, Hardwood, Metal</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Color:</span>
+                <span class="spec-value">Burgundy with Gold Accents</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="reviews">
+            <h3>Customer Reviews</h3>
+            <div class="reviews-container">
+              <div class="review-item">
+                <div class="review-header">
+                  <div class="reviewer-info">
+                    <strong>Sarah Johnson</strong>
+                    <div class="review-stars">★★★★★</div>
+                  </div>
+                  <span class="review-date">2 weeks ago</span>
+                </div>
+                <p class="review-text">Absolutely beautiful sofa! Perfect for our wedding reception. The quality exceeded our expectations and it was delivered on time.</p>
+              </div>
+              <div class="review-item">
+                <div class="review-header">
+                  <div class="reviewer-info">
+                    <strong>Michael Rodriguez</strong>
+                    <div class="review-stars">★★★★☆</div>
+                  </div>
+                  <span class="review-date">1 month ago</span>
+                </div>
+                <p class="review-text">Great piece for our corporate event. Very comfortable and elegant. Only minor issue was a small stain that was quickly resolved.</p>
+              </div>
+              <div class="review-item">
+                <div class="review-header">
+                  <div class="reviewer-info">
+                    <strong>Emily Chen</strong>
+                    <div class="review-stars">★★★★★</div>
+                  </div>
+                  <span class="review-date">1 month ago</span>
+                </div>
+                <p class="review-text">Stunning sofa that made our event look so sophisticated. The burgundy color was exactly what we needed. Highly recommend!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="related-products">
+        <h2>Related Products</h2>
+        <div class="related-grid">
+          <div class="related-item">
+            <img src="https://m.media-amazon.com/images/I/6143l5UinSL._UF1000,1000_QL80_.jpg" alt="Gold Accent Table">
+            <div class="related-info">
+              <h4>Gold Accent Table</h4>
+              <span class="related-price">₹280</span>
+              <button class="btn btn-sm view-btn">View</button>
+            </div>
+          </div>
+          <div class="related-item">
+            <img src="https://www.insaraf.com/cdn/shop/products/DSC_3887_eb0cd51d-3131-4df0-9cf8-daf24ec8e620_2048x.jpg?v=1556419293" alt="Leather Lounge Chair">
+            <div class="related-info">
+              <h4>Leather Lounge Chair</h4>
+              <span class="related-price">₹380</span>
+              <button class="btn btn-sm view-btn">View</button>
+            </div>
+          </div>
+          <div class="related-item">
+            <img src="https://craftzone.in/backend/uploads/products/SKU0000001081/ebffdf8a3f1b5b7c5786677b09481cee.webp" alt="Art Deco Mirror">
+            <div class="related-info">
+              <h4>Art Deco Mirror</h4>
+              <span class="related-price">₹240</span>
+              <button class="btn btn-sm view-btn">View</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">Eventra</div>
+        <p>Premium event rentals for unforgettable occasions</p>
+      </div>
+      <div class="footer-links">
+        <div>© 2025 Eventra. All rights reserved.</div>
+        <div>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/product-detail.js"></script>
+</body>
+</html>

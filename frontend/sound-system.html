@@ -608,6 +608,22 @@
           }
         });
       });
+
+      // View details button
+      document.querySelectorAll('.view-details-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          const productCard = this.closest('.product-card');
+          const productTitle = productCard.querySelector('.product-title').textContent;
+          
+          // Create product ID from title
+          const productId = productTitle.toLowerCase()
+            .replace(/[^a-z0-9\s]/g, '')
+            .replace(/\s+/g, '-');
+          
+          // Navigate to product detail page
+          window.location.href = `product-detail.html?id=${productId}&category=sound-system`;
+        });
+      });
     </script>
   </body>
 </html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Dashboard - Eventra</title>
+  <link rel="stylesheet" href="./css/navbar.css">
+  <link rel="stylesheet" href="./css/dashboard.css">
+  <script src="./js/auth.js"></script>
+  <script src="./js/search.js"></script>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Eventra</div>
+
+      <nav class="menu" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="categories.html">Categories</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-buttons">
+        <div class="cart-icon" onclick="window.location.href='cart.html'">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="m1 1 4 4 2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-count">0</span>
+        </div>
+        <button class="btn btn-outline" id="loginBtn">Dashboard</button>
+        <button class="btn btn-primary" id="signupBtn">Logout</button>
+        <button class="hamburger" id="hamburger">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="dashboard-container">
+      <div class="dashboard-header">
+        <h1>My Dashboard</h1>
+        <p>Welcome back, <span id="userName">User</span>!</p>
+      </div>
+
+      <div class="dashboard-tabs">
+        <button class="tab-btn active" data-tab="overview">Overview</button>
+        <button class="tab-btn" data-tab="bookings">My Bookings</button>
+        <button class="tab-btn" data-tab="favorites">Favorites</button>
+        <button class="tab-btn" data-tab="profile">Profile</button>
+      </div>
+
+      <div class="tab-content">
+        <!-- Overview Tab -->
+        <div class="tab-panel active" id="overview">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">📅</div>
+              <div class="stat-info">
+                <div class="stat-number" id="totalBookings">0</div>
+                <div class="stat-label">Total Bookings</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">❤️</div>
+              <div class="stat-info">
+                <div class="stat-number" id="totalFavorites">0</div>
+                <div class="stat-label">Favorite Items</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">💰</div>
+              <div class="stat-info">
+                <div class="stat-number" id="totalSpent">₹0</div>
+                <div class="stat-label">Total Spent</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="recent-activity">
+            <h3>Recent Activity</h3>
+            <div class="activity-list" id="activityList">
+              <div class="activity-item">
+                <div class="activity-icon">📦</div>
+                <div class="activity-content">
+                  <div class="activity-title">Welcome to Eventra!</div>
+                  <div class="activity-time">Just now</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bookings Tab -->
+        <div class="tab-panel" id="bookings">
+          <div class="bookings-header">
+            <h3>My Bookings</h3>
+            <button class="btn btn-primary" onclick="window.location.href='categories.html'">
+              New Booking
+            </button>
+          </div>
+          <div class="bookings-list" id="bookingsList">
+            <div class="empty-state">
+              <div class="empty-icon">📅</div>
+              <h4>No bookings yet</h4>
+              <p>Start browsing our catalog to make your first booking!</p>
+              <button class="btn btn-primary" onclick="window.location.href='categories.html'">
+                Browse Catalog
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Favorites Tab -->
+        <div class="tab-panel" id="favorites">
+          <div class="favorites-header">
+            <h3>My Favorites</h3>
+          </div>
+          <div class="favorites-grid" id="favoritesList">
+            <div class="empty-state">
+              <div class="empty-icon">❤️</div>
+              <h4>No favorites yet</h4>
+              <p>Save items you love to easily find them later!</p>
+              <button class="btn btn-primary" onclick="window.location.href='categories.html'">
+                Browse Catalog
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Tab -->
+        <div class="tab-panel" id="profile">
+          <div class="profile-section">
+            <h3>Profile Information</h3>
+            <form class="profile-form" id="profileForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input type="text" id="firstName" required>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" id="lastName" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone">
+              </div>
+              <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Update Profile</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">Eventra</div>
+        <p>Premium event rentals for unforgettable occasions</p>
+      </div>
+      <div class="footer-links">
+        <div>© 2025 Eventra. All rights reserved.</div>
+        <div>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/dashboard.js"></script>
+</body>
+</html>
