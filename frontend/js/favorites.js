@@ -22,8 +22,10 @@ class FavoritesManager {
 
   toggleFavorite(button) {
     if (!window.authSystem.isLoggedIn()) {
-      alert('Please login to add favorites');
-      window.location.href = 'login.html';
+      window.showWarning('Please login to add favorites', 'Login Required');
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 2000);
       return;
     }
 

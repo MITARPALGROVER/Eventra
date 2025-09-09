@@ -11,7 +11,7 @@
   <!-- NAVBAR -->
   <header class="nav">
     <div class="container nav-inner">
-      <div class="brand">Eventra</div>
+      <div class="brand" onclick="window.location.href = 'index.html'">Eventra</div>
 
       <nav class="menu" aria-label="Main">
         <a href="index.html">Home</a>
@@ -275,12 +275,17 @@
         
         // Simulate payment processing
         setTimeout(() => {
-          alert('Payment successful! Your booking has been confirmed.');
+          window.showSuccess('Payment successful! Your booking has been confirmed.', 'Payment Complete');
           // In a real app, redirect to confirmation page
-          window.location.href = 'index.html';
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 2000);
         }, 2000);
       });
     });
   </script>
+
+  <script src="js/popup-modal.js"></script>
+  <script src="js/email-service.js"></script>
 </body>
 </html>

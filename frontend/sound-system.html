@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="./css/navbar.css" />
     <link rel="stylesheet" href="./css/category-detail.css" />
     <link rel="stylesheet" href="./css/payment-modal.css" />
+    <script src="./js/popup-modal.js"></script>
+    <script src="./js/email-service.js"></script>
     <script src="./js/auth.js"></script>
     <script src="./js/animations.js"></script>
     <script src="./js/cart.js"></script>
@@ -18,7 +20,7 @@
     <!-- NAVBAR -->
     <header class="nav">
       <div class="container nav-inner">
-        <div class="brand">Eventra</div>
+        <div class="brand" onclick="window.location.href = 'index.html'">Eventra</div>
 
         <nav class="menu" aria-label="Main">
           <a href="index.html">Home</a>
@@ -187,7 +189,7 @@
           <div class="product-card">
             <div class="product-image">
               <img
-                src="https://jbl.com.in/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw17a6b00d/JBL_EON712_Slant_L.png"
+                src="https://avshack.in/cdn/shop/products/1_109a7779-8a5d-4f43-b4c1-ebe0df330d99.jpg?v=1643148665&width=1500"
                 alt="JBL EON712 PA System"
               />
               <span class="featured-tag">Featured</span>
@@ -230,7 +232,7 @@
           <div class="product-card">
             <div class="product-image">
               <img
-                src="https://m.media-amazon.com/images/I/81JACYctqTL.jpg"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpcUiBbC-JOoD_1_GbosYdRjYKdNXbvIYDeQ&s"
                 alt="Pioneer DJ System"
               />
               <button class="favorite-button">
@@ -314,7 +316,7 @@
           <div class="product-card">
             <div class="product-image">
               <img
-                src="https://www.yamaha.com/en/musical_instrument_guide/common/images/mixer/play_mixer_02.jpg"
+                src="https://electronicemporium.in/wp-content/uploads/2019/06/10.jpg"
                 alt="Yamaha Digital Mixer"
               />
               <button class="favorite-button">
@@ -356,7 +358,7 @@
           <div class="product-card">
             <div class="product-image">
               <img
-                src="https://www.eetimes.com/wp-content/uploads/media-1408635-qs12-1-large.png"
+                src="https://5.imimg.com/data5/SELLER/Default/2022/6/CJ/UN/MJ/15271346/bose-l1-pro32-portable-line-array.png"
                 alt="Bose L1 Pro Line Array"
               />
               <span class="featured-tag">Featured</span>
@@ -399,7 +401,7 @@
           <div class="product-card">
             <div class="product-image">
               <img
-                src="https://toppng.com/uploads/preview/sennheiser-ew-100-g4-wireless-lavalier-microphone-system-11563235323dyvdd4cfvb.png"
+                src="https://files.vplak.com/500-images/sennheiser/EW100-G4-ME4/black/image-1.jpg"
                 alt="Sennheiser Wireless Lavalier System"
               />
               <button class="favorite-button">
@@ -441,7 +443,7 @@
           <div class="product-card">
             <div class="product-image">
               <img
-                src="https://www.savanasound.com/images/detailed/1/QSC-KS118-18-Active-Subwoofer-Front-View.jpg"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDAzbcw02r-hHwEyG_7ZJehuiug-tbh9vIRw&s"
                 alt="QSC Subwoofers"
               />
               <button class="favorite-button">
@@ -483,7 +485,7 @@
           <div class="product-card">
             <div class="product-image">
               <img
-                src="https://cdn.shoplightspeed.com/shops/633857/files/35929867/1600x2048x2/roland-complete-mobile-recording-studio.jpg"
+                src="https://m.media-amazon.com/images/I/61wsTuGifzL.jpg"
                 alt="Roland Mobile Recording Studio"
               />
               <button class="favorite-button">
@@ -522,7 +524,7 @@
           </div>
         </div>
         
-        <div class="load-more">
+        <!-- <div class="load-more">
           <button id="loadMoreBtn">Load More Products</button>
         </div>
         
@@ -551,12 +553,29 @@
               />
             </svg>
           </button>
-        </div>
+        </div> -->
         
 
       </div>
     </div>
+        <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">Eventra</div>
+          <p>Premium event rentals for unforgettable occasions</p>
+        </div>
+        <div class="footer-links">
+          <div>© 2025 Eventra. All rights reserved.</div>
+          <div>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Support</a>
+          </div>
+        </div>
+      </div>
+    </footer>
 
+    <script src="js/script.js"></script>
     <script>
       // Show/hide filters panel
       document.getElementById('showFiltersBtn').addEventListener('click', function() {

@@ -4,6 +4,11 @@
         if (window.authSystem) {
           window.authSystem.updateUIBasedOnAuth();
         }
+        
+        // Initialize cart system on all pages
+        if (typeof ShoppingCart !== 'undefined') {
+          window.shoppingCart = new ShoppingCart();
+        }
       });
 
       // Mobile menu toggle (simple demo)
@@ -80,7 +85,8 @@
         const vendorButtons = document.querySelectorAll('.cta-box .btn-ghost, .cta-row .btn-ghost');
         vendorButtons.forEach(button => {
           button.addEventListener('click', () => {
-            window.location = "vendor-signup.html";
+            // window.location = "vendor-signup.html";
+            window.location = "#";
           });
         });
       });

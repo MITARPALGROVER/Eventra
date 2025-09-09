@@ -18,7 +18,7 @@
     <!-- NAVBAR -->
     <header class="nav">
       <div class="container nav-inner">
-        <div class="brand">Eventra</div>
+        <div class="brand" onclick="window.location.href = 'index.html'">Eventra</div>
 
         <nav class="menu" aria-label="Main">
           <a href="index.html">Home</a>
@@ -186,14 +186,14 @@
 
         <div class="products-grid">
           <!-- Product 1 -->
-          <div class="product-card">
+          <div class="product-card" data-product-id="maharaja-velvet-sofa">
             <div class="product-image">
               <img
                 src="https://cpimg.tistatic.com/5553478/b/1/maharaja-wooden-sofa.jpg"
                 alt="Royal Maharaja Sofa"
               />
               <span class="featured-tag">Featured</span>
-              <button class="favorite-button">
+              <button class="favorite-button" data-item-id="maharaja-velvet-sofa" data-item-title="Maharaja Velvet Sofa" data-item-price="₹2,500" data-item-category="Royal Seating">
                 <svg
                   width="24"
                   height="24"
@@ -229,13 +229,13 @@
           </div>
 
           <!-- Product 2 -->
-          <div class="product-card">
+          <div class="product-card" data-product-id="carved-wooden-jharokha">
             <div class="product-image">
               <img
                 src="https://m.media-amazon.com/images/I/6143l5UinSL._UF1000,1000_QL80_.jpg"
                 alt="Carved Wooden Jharokha"
               />
-              <button class="favorite-button">
+              <button class="favorite-button" data-item-id="carved-wooden-jharokha" data-item-title="Carved Wooden Jharokha" data-item-price="₹3,200" data-item-category="Decorative">
                 <svg
                   width="24"
                   height="24"
@@ -271,14 +271,14 @@
           </div>
 
           <!-- Product 3 -->
-          <div class="product-card">
+          <div class="product-card" data-product-id="rajasthani-carved-table">
             <div class="product-image">
               <img
                 src="https://www.insaraf.com/cdn/shop/products/DSC_3887_eb0cd51d-3131-4df0-9cf8-daf24ec8e620_2048x.jpg?v=1556419293"
                 alt="Rajasthani Carved Table"
               />
               <span class="featured-tag">Featured</span>
-              <button class="favorite-button">
+              <button class="favorite-button" data-item-id="rajasthani-carved-table" data-item-title="Rajasthani Carved Table" data-item-price="₹1,800" data-item-category="Tables">
                 <svg
                   width="24"
                   height="24"
@@ -314,13 +314,13 @@
           </div>
 
           <!-- Product 4 -->
-          <div class="product-card">
+          <div class="product-card" data-product-id="traditional-brass-set">
             <div class="product-image">
               <img
                 src="https://craftzone.in/backend/uploads/products/SKU0000001081/ebffdf8a3f1b5b7c5786677b09481cee.webp"
                 alt="Brass Decor Set"
               />
-              <button class="favorite-button">
+              <button class="favorite-button" data-item-id="traditional-brass-set" data-item-title="Traditional Brass Set" data-item-price="₹4,200" data-item-category="Decorative">
                 <svg
                   width="24"
                   height="24"
@@ -356,13 +356,13 @@
           </div>
 
           <!-- Product 5 -->
-          <div class="product-card">
+          <div class="product-card" data-product-id="banarasi-diwan-set">
             <div class="product-image">
               <img
                 src="https://m.media-amazon.com/images/I/A1v3uqDeMuL.jpg"
                 alt="Banarasi Diwan Set"
               />
-              <button class="favorite-button">
+              <button class="favorite-button" data-item-id="banarasi-diwan-set" data-item-title="Banarasi Diwan Set" data-item-price="₹6,500" data-item-category="Seating">
                 <svg
                   width="24"
                   height="24"
@@ -398,14 +398,14 @@
           </div>
 
           <!-- Product 6 -->
-          <div class="product-card">
+          <div class="product-card" data-product-id="tanjore-painting-frame">
             <div class="product-image">
               <img
-                src="https://images.unsplash.com/photo-1577103032015-d82922e27f42?q=80&w=1470&auto=format&fit=crop"
+                src="https://c9admin.cottage9.com/uploads/812/Large-Tanjore-Painting-of-Gajalakshmi-In-Cupboard-Style-Wooden-Frame-1.jpg"
                 alt="Tanjore Painting Frame"
               />
               <span class="featured-tag">Featured</span>
-              <button class="favorite-button">
+              <button class="favorite-button" data-item-id="tanjore-painting-frame" data-item-title="Tanjore Painting Frame" data-item-price="₹8,000" data-item-category="Art">
                 <svg
                   width="24"
                   height="24"
@@ -441,7 +441,7 @@
           </div>
         </div>
 
-        <div class="load-more">
+        <!-- <div class="load-more">
           <button id="loadMoreBtn">Load More Products</button>
         </div>
         
@@ -470,7 +470,7 @@
               />
             </svg>
           </button>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -534,7 +534,7 @@
       document
         .querySelector(".btn-apply")
         ?.addEventListener("click", function () {
-          alert("Filters would be applied in a real application.");
+          window.showInfo("Filters would be applied in a real application.", "Filter Applied");
           document.getElementById("filterPanel").classList.remove("active");
         });
 
@@ -549,17 +549,63 @@
           document.getElementById("priceValue").textContent = "₹2,500";
         });
 
-      // Favorite button toggle
+      // Favorite button functionality
       document.querySelectorAll(".favorite-button").forEach((button) => {
         button.addEventListener("click", () => {
-          button.classList.toggle("active");
-          const path = button.querySelector("path");
-          if (button.classList.contains("active")) {
-            path.setAttribute("fill", "currentColor");
-          } else {
-            path.setAttribute("fill", "none");
+          // Check if user is logged in
+          if (!window.authSystem || !window.authSystem.isLoggedIn()) {
+            alert('Please log in to add items to favorites!');
+            window.location.href = 'login.html';
+            return;
           }
+
+          const itemId = button.dataset.itemId;
+          const itemTitle = button.dataset.itemTitle;
+          const itemPrice = button.dataset.itemPrice;
+          const itemCategory = button.dataset.itemCategory;
+
+          // Check if item is already in favorites
+          const isAlreadyFavorite = window.authSystem.isFavorite(itemId);
+          
+          if (isAlreadyFavorite) {
+            // Remove from favorites
+            const success = window.authSystem.removeFromFavorites(itemId);
+            if (success) {
+              button.classList.remove("active");
+              const path = button.querySelector("path");
+              path.setAttribute("fill", "none");
+              alert(`${itemTitle} removed from favorites!`);
+            }
+          } else {
+            // Add to favorites
+            const itemData = {
+              title: itemTitle,
+              price: itemPrice,
+              category: itemCategory
+            };
+            const success = window.authSystem.addToFavorites(itemId, itemData);
+            if (success) {
+              button.classList.add("active");
+              const path = button.querySelector("path");
+              path.setAttribute("fill", "currentColor");
+              alert(`${itemTitle} added to favorites!`);
+            }
+          }
+
+          console.log('Updated user:', window.authSystem.currentUser);
+          console.log('Updated favorites:', window.authSystem.currentUser.favorites);
         });
+
+        // Set initial state based on user's favorites
+        if (window.authSystem && window.authSystem.isLoggedIn()) {
+          const itemId = button.dataset.itemId;
+          
+          if (window.authSystem.isFavorite(itemId)) {
+            button.classList.add("active");
+            const path = button.querySelector("path");
+            path.setAttribute("fill", "currentColor");
+          }
+        }
       });
 
       // Load more button
@@ -567,7 +613,7 @@
         .getElementById("loadMoreBtn")
         .addEventListener("click", function () {
           // This would typically load more products via AJAX
-          alert("This would load more products in a real application.");
+          window.showInfo("This would load more products in a real application.", "Load More");
         });
 
       // Navigation buttons
@@ -610,5 +656,7 @@
         });
       });
     </script>
+
+    <script src="js/popup-modal.js"></script>
   </body>
 </html>

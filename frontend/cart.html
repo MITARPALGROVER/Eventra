@@ -15,7 +15,7 @@
   <!-- NAVBAR -->
   <header class="nav">
     <div class="container nav-inner">
-      <div class="brand">Eventra</div>
+      <div class="brand" onclick="window.location.href = 'index.html'">Eventra</div>
 
       <nav class="menu" aria-label="Main">
         <a href="index.html">Home</a>
@@ -170,8 +170,10 @@
         // Checkout
         document.getElementById('checkoutBtn').addEventListener('click', () => {
           if (!window.authSystem.isLoggedIn()) {
-            alert('Please login to proceed with checkout');
-            window.location.href = 'login.html';
+            window.showWarning('Please login to proceed with checkout', 'Login Required');
+            setTimeout(() => {
+              window.location.href = 'login.html';
+            }, 2000);
             return;
           }
 
@@ -207,5 +209,9 @@
       }
     });
   </script>
+
+  <script src="js/script.js"></script>
+  <script src="js/popup-modal.js"></script>
+  <script src="js/email-service.js"></script>
 </body>
 </html>

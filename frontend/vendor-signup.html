@@ -123,7 +123,7 @@
     <!-- NAVBAR -->
     <header class="nav">
       <div class="container nav-inner">
-        <div class="brand">Eventra</div>
+        <div class="brand" onclick="window.location.href = 'index.html'">Eventra</div>
 
         <nav class="menu" aria-label="Main">
           <a href="index.html">Home</a>
@@ -250,10 +250,11 @@
     </footer>
 
     <script src="./js/script.js"></script>
+    <script src="js/popup-modal.js"></script>
     <script>
       document.querySelector('.vendor-form').addEventListener('submit', function(e) {
         e.preventDefault();
-        alert("Thank you for your interest! We'll review your application and contact you within 2-3 business days.");
+        window.showSuccess("Thank you for your interest! We'll review your application and contact you within 2-3 business days.", "Application Submitted");
       });
     </script>
   </body>

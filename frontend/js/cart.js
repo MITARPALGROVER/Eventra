@@ -87,7 +87,7 @@ class ShoppingCart {
     if (cartCount) {
       const count = this.getItemCount();
       cartCount.textContent = count;
-      cartCount.style.display = count > 0 ? 'block' : 'none';
+      cartCount.style.display = count > 0 ? 'flex' : 'none';
     }
     
     if (cartTotal) {
@@ -130,8 +130,10 @@ class ShoppingCart {
         e.preventDefault();
         
         if (!window.authSystem.isLoggedIn()) {
-          alert('Please login to add items to cart');
-          window.location.href = 'login.html';
+          window.showWarning('Please login to add items to cart', 'Login Required');
+          setTimeout(() => {
+            window.location.href = 'login.html';
+          }, 2000);
           return;
         }
 
@@ -151,7 +153,7 @@ class ShoppingCart {
     const category = categoryElement ? categoryElement.textContent : 'General';
     
     return {
-      id: title.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, '-') + '-' + Date.now(),
+      id: title.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, '-'),
       title,
       price,
       image,

@@ -79,6 +79,22 @@ class AuthSystem {
     return this.currentUser !== null;
   }
 
+  // Save user data to localStorage
+  saveUserData() {
+    if (!this.isLoggedIn()) return false;
+
+    const users = this.getUsers();
+    const userIndex = users.findIndex(u => u.id === this.currentUser.id);
+    
+    if (userIndex !== -1) {
+      users[userIndex] = { ...this.currentUser };
+      localStorage.setItem('eventra_users', JSON.stringify(users));
+      localStorage.setItem('eventra_current_user', JSON.stringify(this.currentUser));
+      return true;
+    }
+    return false;
+  }
+
   // Update UI based on authentication status
   updateUIBasedOnAuth() {
     const loginBtn = document.getElementById('loginBtn');
@@ -115,7 +131,7 @@ class AuthSystem {
   // Add item to favorites
   addToFavorites(itemId, itemData) {
     if (!this.isLoggedIn()) {
-      alert('Please login to add favorites');
+      window.showWarning('Please login to add favorites', 'Login Required');
       return false;
     }
 

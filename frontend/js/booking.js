@@ -96,15 +96,33 @@ class BookingSystem {
   // Handle book now button click
   handleBookNow(button) {
     if (!window.authSystem.isLoggedIn()) {
-      alert('Please login to make a booking');
-      window.location.href = 'login.html';
+      window.showWarning('Please login to make a booking', 'Login Required');
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 2000);
       return;
     }
 
     const productCard = button.closest('.product-card');
     const item = this.extractItemData(productCard);
     
-    this.showBookingModal(item);
+    // Skip booking modal and go directly to payment modal for consistency
+    const bookingData = {
+      items: [{
+        ...item,
+        quantity: 1,
+        rentalDays: 1
+      }],
+      totalAmount: parseFloat(item.price.replace(/[^\d.]/g, '')),
+      eventLocation: null, // Will be collected in payment modal
+      eventDate: null,
+      specialRequests: null
+    };
+    
+    // Use the same payment modal as cart checkout
+    if (window.paymentSystem) {
+      window.paymentSystem.showPaymentModal(bookingData);
+    }
   }
 
   // Extract item data from product card
@@ -116,7 +134,7 @@ class BookingSystem {
     const category = categoryElement ? categoryElement.textContent : 'General';
     
     return {
-      id: title.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, '-') + '-' + Date.now(),
+      id: title.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, '-'),
       title,
       price,
       image,
@@ -257,7 +275,7 @@ class BookingSystem {
           this.showBookingConfirmation(booking);
         }
       } catch (error) {
-        alert(error.message);
+        window.showError(error.message, 'Booking Error');
       }
     });
   }

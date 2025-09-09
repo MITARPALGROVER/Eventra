@@ -23,6 +23,12 @@
 
 /* Button animations */
 .btn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 10px 18px;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -45,6 +51,19 @@
 
 .btn:hover {
   transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  color: #111;
+  box-shadow: 0 1px 0 #e8e8ef;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--primary-ink);
+  box-shadow: 0 10px 24px -8px var(--ring);
 }
 
 .btn-primary:hover {
@@ -113,12 +132,6 @@
   100% {
     transform: translateY(0px) rotate(0.5deg) scale(1);
   }
-}
-.glass-card.hero-card {
-  animation: floatCardHero 18s ease-in-out infinite !important;
-}
-.glass-card.planner-card {
-  animation: floatCardPlanner 16s ease-in-out infinite !important;
 }
 @keyframes floatCard {
   0% {
@@ -640,10 +653,43 @@ img {
 
 /* Footer */
 footer {
-  margin-top: 20px;
-  padding: 24px 0;
-  border-top: 1px solid #ececf2;
-  background: #fff;
+  background: #111;
+  color: #f0f0f0;
+  padding: 40px 0;
+  width: 100%;
+  margin: 0;
+}
+
+.footer-content {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #333;
+}
+
+.footer-brand {
+  font-weight: 800;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-links a {
+  color: #999;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #fff;
 }
 .foot {
   display: flex;
