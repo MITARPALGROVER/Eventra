@@ -554,8 +554,10 @@
         button.addEventListener("click", () => {
           // Check if user is logged in
           if (!window.authSystem || !window.authSystem.isLoggedIn()) {
-            alert('Please log in to add items to favorites!');
-            window.location.href = 'login.html';
+            window.showWarning('Please login to add items to favorites', 'Login Required');
+            setTimeout(() => {
+              window.location.href = 'login.html';
+            }, 2000);
             return;
           }
 
@@ -574,7 +576,6 @@
               button.classList.remove("active");
               const path = button.querySelector("path");
               path.setAttribute("fill", "none");
-              alert(`${itemTitle} removed from favorites!`);
             }
           } else {
             // Add to favorites
@@ -588,12 +589,8 @@
               button.classList.add("active");
               const path = button.querySelector("path");
               path.setAttribute("fill", "currentColor");
-              alert(`${itemTitle} added to favorites!`);
             }
           }
-
-          console.log('Updated user:', window.authSystem.currentUser);
-          console.log('Updated favorites:', window.authSystem.currentUser.favorites);
         });
 
         // Set initial state based on user's favorites

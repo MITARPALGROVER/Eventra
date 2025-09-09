@@ -303,19 +303,21 @@ class DashboardManager {
           <div class="bookings-list">
             ${userBookings.map(booking => `
               <div class="booking-item">
-                <div class="booking-header">
-                  <span class="booking-id">Ref: #${getReadableId(booking.id)}</span>
-                  <span class="booking-status ${booking.status.toLowerCase()}">${getStatusDisplay(booking.status)}</span>
-                </div>
-                <div class="booking-details">
-                  <h4 class="booking-item-name">${booking.items && booking.items.length > 0 ? booking.items.map(item => item.title || item.name || 'Item').join(', ') : 'Booking Item'}</h4>
-                  <div class="booking-info">
-                    <div class="booking-event-date">📅 Event Date: ${booking.eventDate || 'Not specified'}</div>
-                    <div class="booking-location">📍 Location: ${booking.eventLocation || booking.location || 'TBD'}</div>
+                <div class="booking-content">
+                  <div class="booking-header">
+                    <span class="booking-id">Ref: #${getReadableId(booking.id)}</span>
+                    <span class="booking-status ${booking.status.toLowerCase()}">${getStatusDisplay(booking.status)}</span>
                   </div>
-                </div>
-                <div class="booking-total">
-                  Total: ₹${(booking.totalAmount || 0).toLocaleString('en-IN')}
+                  <div class="booking-details">
+                    <h4 class="booking-item-name">${booking.items && booking.items.length > 0 ? booking.items.map(item => item.title || item.name || 'Item').join(', ') : 'Booking Item'}</h4>
+                    <div class="booking-info">
+                      <div class="booking-event-date">📅 Event Date: ${booking.eventDate || 'Not specified'}</div>
+                      <div class="booking-location">📍 Location: ${booking.eventLocation || booking.location || 'TBD'}</div>
+                    </div>
+                  </div>
+                  <div class="booking-total">
+                    Total: ₹${(booking.totalAmount || 0).toLocaleString('en-IN')}
+                  </div>
                 </div>
               </div>
             `).join('')}

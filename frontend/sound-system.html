@@ -193,7 +193,7 @@
                 alt="JBL EON712 PA System"
               />
               <span class="featured-tag">Featured</span>
-              <button class="favorite-button">
+              <button class="favorite-button" data-item-id="jbl-eon712-professional-pa-system" data-item-title="JBL EON712 Professional PA System" data-item-price="₹3,200/hr" data-item-category="PA Systems">
                 <svg
                   width="24"
                   height="24"
@@ -235,7 +235,7 @@
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpcUiBbC-JOoD_1_GbosYdRjYKdNXbvIYDeQ&s"
                 alt="Pioneer DJ System"
               />
-              <button class="favorite-button">
+              <button class="favorite-button" data-item-id="pioneer-dj-cdj-2000nxs2-djm-900nxs2" data-item-title="Pioneer DJ CDJ-2000NXS2 & DJM-900NXS2" data-item-price="₹4,500/hr" data-item-category="DJ Equipment">
                 <svg
                   width="24"
                   height="24"
@@ -277,7 +277,7 @@
                 src="https://www.bhphotovideo.com/images/images1000x1000/shure_blx24_sm58_h10_blx24_wireless_vocal_system_1013747.jpg"
                 alt="Shure Wireless Mic System"
               />
-              <button class="favorite-button">
+              <button class="favorite-button" data-item-id="shure-blx24-sm58-wireless-mic-system" data-item-title="Shure BLX24/SM58 Wireless Mic System" data-item-price="₹1,800/hr" data-item-category="Microphones">
                 <svg
                   width="24"
                   height="24"
@@ -319,7 +319,7 @@
                 src="https://electronicemporium.in/wp-content/uploads/2019/06/10.jpg"
                 alt="Yamaha Digital Mixer"
               />
-              <button class="favorite-button">
+              <button class="favorite-button" data-item-id="yamaha-tf5-32-channel-digital-mixer" data-item-title="Yamaha TF5 32-Channel Digital Mixer" data-item-price="₹3,800/hr" data-item-category="Audio Mixers">
                 <svg
                   width="24"
                   height="24"
@@ -362,7 +362,7 @@
                 alt="Bose L1 Pro Line Array"
               />
               <span class="featured-tag">Featured</span>
-              <button class="favorite-button">
+              <button class="favorite-button" data-item-id="bose-l1-pro32-portable-line-array-system" data-item-title="Bose L1 Pro32 Portable Line Array System" data-item-price="₹5,500/hr" data-item-category="Line Arrays">
                 <svg
                   width="24"
                   height="24"
@@ -404,7 +404,7 @@
                 src="https://files.vplak.com/500-images/sennheiser/EW100-G4-ME4/black/image-1.jpg"
                 alt="Sennheiser Wireless Lavalier System"
               />
-              <button class="favorite-button">
+              <button class="favorite-button" data-item-id="sennheiser-ew-100-g4-lavalier-system" data-item-title="Sennheiser EW 100 G4 Lavalier System (4-pack)" data-item-price="₹2,800/hr" data-item-category="Wireless Systems">
                 <svg
                   width="24"
                   height="24"
@@ -446,7 +446,7 @@
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDAzbcw02r-hHwEyG_7ZJehuiug-tbh9vIRw&s"
                 alt="QSC Subwoofers"
               />
-              <button class="favorite-button">
+              <button class="favorite-button" data-item-id="qsc-ks118-active-subwoofers" data-item-title="QSC KS118 Active Subwoofers (Pair)" data-item-price="₹3,600/hr" data-item-category="Subwoofers">
                 <svg
                   width="24"
                   height="24"
@@ -488,7 +488,7 @@
                 src="https://m.media-amazon.com/images/I/61wsTuGifzL.jpg"
                 alt="Roland Mobile Recording Studio"
               />
-              <button class="favorite-button">
+              <button class="favorite-button" data-item-id="roland-mobile-recording-studio-package" data-item-title="Roland Mobile Recording Studio Package" data-item-price="₹4,200/hr" data-item-category="Recording">
                 <svg
                   width="24"
                   height="24"
@@ -612,20 +612,65 @@
         });
       }
 
-      // Favorite button toggle
+      // Favorite button functionality with authentication
       const favoriteButtons = document.querySelectorAll('.favorite-button');
       
       favoriteButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          this.classList.toggle('active');
-          const path = this.querySelector('path');
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
           
-          if (this.classList.contains('active')) {
+          if (!window.authSystem || !window.authSystem.isLoggedIn()) {
+            showWarning('Please log in to add items to favorites!');
+            return;
+          }
+          
+          const itemId = this.getAttribute('data-item-id');
+          const itemTitle = this.getAttribute('data-item-title');
+          const itemPrice = this.getAttribute('data-item-price');
+          const itemCategory = this.getAttribute('data-item-category');
+          
+          if (!itemId) {
+            console.error('Item ID not found for favorite button');
+            return;
+          }
+          
+          const itemData = {
+            id: itemId,
+            title: itemTitle,
+            price: itemPrice,
+            category: itemCategory,
+            image: this.closest('.product-card').querySelector('img').src
+          };
+          
+          const isFavorite = window.authSystem.toggleFavorite(itemData);
+          
+          // Update button appearance
+          const path = this.querySelector('path');
+          if (isFavorite) {
+            this.classList.add('active');
             path.setAttribute('fill', 'currentColor');
+            // showSuccess(`${itemTitle} added to favorites!`);
           } else {
+            this.classList.remove('active');
             path.setAttribute('fill', 'none');
+            // showSuccess(`${itemTitle} removed from favorites!`);
           }
         });
+      });
+
+      // Initialize favorites state on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.authSystem && window.authSystem.isLoggedIn()) {
+          const favorites = window.authSystem.getFavorites();
+          document.querySelectorAll('.favorite-button').forEach(button => {
+            const itemId = button.getAttribute('data-item-id');
+            if (itemId && favorites.some(fav => fav.id === itemId)) {
+              button.classList.add('active');
+              const path = button.querySelector('path');
+              path.setAttribute('fill', 'currentColor');
+            }
+          });
+        }
       });
 
       // View details button

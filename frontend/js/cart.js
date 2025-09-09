@@ -63,7 +63,13 @@ class ShoppingCart {
   // Get cart total
   getTotal() {
     return this.items.reduce((total, item) => {
-      const price = parseFloat(item.price.replace(/[^\d.]/g, ''));
+      // Handle both string and number price formats
+      let price = 0;
+      if (typeof item.price === 'string') {
+        price = parseFloat(item.price.replace(/[^\d.]/g, ''));
+      } else if (typeof item.price === 'number') {
+        price = item.price;
+      }
       return total + (price * item.quantity);
     }, 0);
   }
