@@ -110,6 +110,150 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  // Add real-time password validation with inline error messages
+  const passwordField = document.getElementById('password');
+  const confirmPasswordField = document.getElementById('confirm');
+  const emailField = document.getElementById('email');
+  
+  // Password validation function
+  const validatePassword = (password) => {
+    const requirements = {
+      length: password.length >= 8,
+      uppercase: /[A-Z]/.test(password),
+      lowercase: /[a-z]/.test(password),
+      number: /[0-9]/.test(password),
+      special: /[@#_-]/.test(password),
+      noSpaces: !password.includes(' ')
+    };
+    
+    return requirements;
+  };
+  
+  // Show/hide error messages
+  const showError = (elementId, message) => {
+    const errorElement = document.getElementById(elementId);
+    if (errorElement) {
+      errorElement.textContent = message;
+      errorElement.classList.add('show');
+    }
+  };
+  
+  const hideError = (elementId) => {
+    const errorElement = document.getElementById(elementId);
+    if (errorElement) {
+      errorElement.textContent = '';
+      errorElement.classList.remove('show');
+    }
+  };
+  
+  // Update password requirements visual indicators
+  const updateRequirements = (requirements) => {
+    const reqElements = {
+      'length-req': requirements.length,
+      'uppercase-req': requirements.uppercase,
+      'lowercase-req': requirements.lowercase,
+      'number-req': requirements.number,
+      'special-req': requirements.special
+    };
+    
+    Object.entries(reqElements).forEach(([id, isValid]) => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.classList.toggle('valid', isValid);
+      }
+    });
+  };
+  
+  // Real-time validation for password
+  if (passwordField) {
+    passwordField.addEventListener('input', function(e) {
+      let password = e.target.value;
+      let passReqBox = document.getElementById('pass-req');
+      if (passReqBox) {
+        passReqBox.style.display = password ? 'block' : 'none';
+      }
+      // Remove spaces and show inline error if any were found
+      if (password.includes(' ')) {
+        password = password.replace(/\s/g, '');
+        e.target.value = password;
+        showError('password-error', 'Spaces are not allowed in passwords');
+      } else {
+        hideError('password-error');
+      }
+      
+      // Validate password requirements
+      const requirements = validatePassword(password);
+      updateRequirements(requirements);
+      
+      // Check if all requirements are met
+      const allValid = Object.values(requirements).every(req => req);
+      if (password && !allValid) {
+        const missingReqs = [];
+        if (!requirements.length) missingReqs.push('8 characters');
+        if (!requirements.uppercase) missingReqs.push('uppercase letter');
+        if (!requirements.lowercase) missingReqs.push('lowercase letter');
+        if (!requirements.number) missingReqs.push('number');
+        if (!requirements.special) missingReqs.push('special character (@#_-)');
+        
+        if (missingReqs.length > 0) {
+          showError('password-error', `Missing: ${missingReqs.join(', ')}`);
+        }
+      } else if (allValid) {
+        hideError('password-error');
+      }
+    });
+    
+    passwordField.addEventListener('paste', function(e) {
+      setTimeout(() => {
+        if (e.target.value.includes(' ')) {
+          e.target.value = e.target.value.replace(/\s/g, '');
+          showError('password-error', 'Spaces have been removed from your password');
+        }
+      }, 10);
+    });
+  }
+  
+  // Real-time validation for confirm password
+  if (confirmPasswordField) {
+    confirmPasswordField.addEventListener('input', function(e) {
+      let confirmPassword = e.target.value;
+      
+      // Remove spaces and show inline error
+      if (confirmPassword.includes(' ')) {
+        confirmPassword = confirmPassword.replace(/\s/g, '');
+        e.target.value = confirmPassword;
+        showError('confirm-error', 'Spaces are not allowed in passwords');
+      } else if (passwordField.value && confirmPassword !== passwordField.value) {
+        showError('confirm-error', 'Passwords do not match');
+      } else {
+        hideError('confirm-error');
+      }
+    });
+    
+    confirmPasswordField.addEventListener('paste', function(e) {
+      setTimeout(() => {
+        if (e.target.value.includes(' ')) {
+          e.target.value = e.target.value.replace(/\s/g, '');
+          showError('confirm-error', 'Spaces have been removed from your password');
+        }
+      }, 10);
+    });
+  }
+  
+  // Email validation
+  if (emailField) {
+    emailField.addEventListener('blur', function(e) {
+      const email = e.target.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+      if (email && !emailRegex.test(email)) {
+        showError('email-error', 'Please enter a valid email address');
+      } else {
+        hideError('email-error');
+      }
+    });
+  }
+
   // Account type selection
   const accountTypes = document.querySelectorAll('.account-types .option');
   let selectedAccountType = 'customer';
@@ -132,14 +276,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirm').value;
 
-    // Basic validation
+    // Comprehensive validation
     if (!firstName || !lastName || !email || !password) {
-      popupModal.show('Please fill in all required fields', 'warning', 'Missing Information');
+      showError('password-error', 'Please fill in all required fields');
       return;
     }
 
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      showError('email-error', 'Please enter a valid email address');
+      return;
+    }
+
+    // Strong password validation
+    const passwordRequirements = validatePassword(password);
+    if (!passwordRequirements.length) {
+      showError('password-error', 'Password must be at least 8 characters long');
+      return;
+    }
+    if (!passwordRequirements.uppercase) {
+      showError('password-error', 'Password must contain at least one uppercase letter');
+      return;
+    }
+    if (!passwordRequirements.lowercase) {
+      showError('password-error', 'Password must contain at least one lowercase letter');
+      return;
+    }
+    if (!passwordRequirements.number) {
+      showError('password-error', 'Password must contain at least one number');
+      return;
+    }
+    if (!passwordRequirements.special) {
+      showError('password-error', 'Password must contain at least one special character (@#_-)');
+      return;
+    }
+    if (!passwordRequirements.noSpaces) {
+      showError('password-error', 'Password cannot contain spaces');
+      return;
+    }
+
+    // Confirm password validation
     if (password !== confirmPassword) {
-      popupModal.show('Passwords do not match', 'error', 'Password Mismatch');
+      showError('confirm-error', 'Passwords do not match');
       return;
     }
 

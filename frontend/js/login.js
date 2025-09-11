@@ -101,6 +101,80 @@ class PopupModal {
 // Initialize popup system
 const popupModal = new PopupModal();
 
+// Helper functions for inline validation
+const showError = (elementId, message) => {
+  const errorElement = document.getElementById(elementId);
+  if (errorElement) {
+    errorElement.textContent = message;
+    errorElement.classList.add('show');
+  }
+};
+
+const hideError = (elementId) => {
+  const errorElement = document.getElementById(elementId);
+  if (errorElement) {
+    errorElement.textContent = '';
+    errorElement.classList.remove('show');
+  }
+};
+
+// Password validation function
+const validatePassword = (password) => {
+  return {
+    length: password.length >= 8,
+    uppercase: /[A-Z]/.test(password),
+    lowercase: /[a-z]/.test(password),
+    number: /[0-9]/.test(password),
+    special: /[@#_-]/.test(password),
+    noSpaces: !password.includes(' ')
+  };
+};
+
+// Add real-time password validation with inline error messages
+document.addEventListener('DOMContentLoaded', function() {
+  const passwordField = document.getElementById('password');
+  const emailField = document.getElementById('email');
+  
+  if (passwordField) {
+    passwordField.addEventListener('input', function(e) {
+      let password = e.target.value;
+      
+      // Remove spaces and show inline error if any were found
+      if (password.includes(' ')) {
+        password = password.replace(/\s/g, '');
+        e.target.value = password;
+        showError('password-error', 'Spaces are not allowed in passwords');
+      } else {
+        hideError('password-error');
+      }
+    });
+    
+    // Prevent pasting content with spaces
+    passwordField.addEventListener('paste', function(e) {
+      setTimeout(() => {
+        if (e.target.value.includes(' ')) {
+          e.target.value = e.target.value.replace(/\s/g, '');
+          showError('password-error', 'Spaces have been removed from your password');
+        }
+      }, 10);
+    });
+  }
+  
+  // Email validation
+  if (emailField) {
+    emailField.addEventListener('blur', function(e) {
+      const email = e.target.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+      if (email && !emailRegex.test(email)) {
+        showError('email-error', 'Please enter a valid email address');
+      } else {
+        hideError('email-error');
+      }
+    });
+  }
+});
+
 // Import auth system
 document.addEventListener('DOMContentLoaded', () => {
   // Ensure auth system is loaded
@@ -119,11 +193,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const password = document.getElementById('password').value;
     const rememberMe = document.getElementById('rememberMe')?.checked;
 
-    // Basic validation
+    // Comprehensive validation
     if (!email || !password) {
-      popupModal.show('Please fill in all fields', 'warning', 'Missing Information');
+      if (!email) showError('email-error', 'Email is required');
+      if (!password) showError('password-error', 'Password is required');
       return;
     }
+
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      showError('email-error', 'Please enter a valid email address');
+      return;
+    }
+
+    // Password validation
+    if (password.includes(' ')) {
+      showError('password-error', 'Password cannot contain spaces');
+      return;
+    }
+
+    // Clear any existing errors
+    hideError('email-error');
+    hideError('password-error');
 
     try {
       // Show loading state
@@ -151,20 +243,22 @@ document.addEventListener('DOMContentLoaded', () => {
           submitBtn.textContent = originalText;
           submitBtn.disabled = false;
           
-          // Show error with animation
-          const errorDiv = document.createElement('div');
-          errorDiv.className = 'error-message';
-          errorDiv.textContent = error.message;
+          // Show authentication error in the email field (as it's typically the identifier)
+          const emailError = document.getElementById('email-error');
+          emailError.textContent = error.message;
+          emailError.classList.add('show');
           
-          const form = document.getElementById('loginForm');
-          form.insertBefore(errorDiv, form.firstChild);
+          // Also add error styling to the input fields
+          document.getElementById('email').classList.add('error');
+          document.getElementById('password').classList.add('error');
           
-          // Remove error after 3 seconds
+          // Remove error after 5 seconds
           setTimeout(() => {
-            if (errorDiv.parentElement) {
-              errorDiv.remove();
-            }
-          }, 3000);
+            emailError.textContent = '';
+            emailError.classList.remove('show');
+            document.getElementById('email').classList.remove('error');
+            document.getElementById('password').classList.remove('error');
+          }, 5000);
         }
       }, 800);
       
