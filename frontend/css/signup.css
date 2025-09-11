@@ -127,6 +127,10 @@ p.sub {
 }
 
 /* Form fields */
+.name{
+  display: flex;
+  justify-content: space-between;
+}
 .field {
   margin-bottom: 16px;
   display: flex;
@@ -146,6 +150,33 @@ input {
 }
 input:focus {
   outline: 2px solid var(--primary);
+}
+
+
+.passwordBox{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.show-password-btn {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  color: #6b7280; /* Gray-500 */
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  width: 1rem;
+  height: 1rem;
+}
+.show-password-btn:hover {
+  color: #374151; /* Gray-700 */
+}
+.show-password-icon {
+  width: 16px;
+  height: 16px;
 }
 
 /* Error messages */

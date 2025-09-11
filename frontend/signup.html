@@ -19,10 +19,10 @@
 
 <div class="card">
   <!-- Eventra Logo -->
-  <div class="logo">
+  <!-- <div class="logo">
     <h2>Eventra</h2>
   </div>
-  
+   -->
   <h1>Join Eventra</h1>
   <p class="sub">Create your premium event rental account</p>
 
@@ -32,13 +32,15 @@
   </div>
 
   <form id="signupForm">
-    <div class="field">
-      <label for="first">First Name</label>
-      <input type="text" id="first" required>
-    </div>
-    <div class="field">
-      <label for="last">Last Name</label>
-      <input type="text" id="last" required>
+    <div class="name">
+      <div class="field">
+        <label for="first">First Name</label>
+        <input type="text" id="first" required>
+      </div>
+      <div class="field">
+        <label for="last">Last Name</label>
+        <input type="text" id="last" required>
+      </div>
     </div>
     <div class="field">
       <label for="email">Email Address</label>
@@ -47,7 +49,15 @@
     </div>
     <div class="field">
       <label for="password">Password</label>
-      <input type="password" id="password" required placeholder="Create a strong password" minlength="8">
+      <div class="passwordBox">
+        <input type="password" id="password" required placeholder="Create a strong password" minlength="8">
+        <button type="button" class="show-password-btn" aria-label="Show password">
+          <svg class="show-password-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+          </svg>
+        </button>
+      </div>
       <div class="error-message" id="password-error"></div>
       <div class="password-requirements" id="pass-req">
         <small>Password must contain:</small>
@@ -62,16 +72,24 @@
     </div>
     <div class="field">
       <label for="confirm">Confirm Password</label>
-      <input type="password" id="confirm" required placeholder="Confirm your password" minlength="8">
+      <div class="passwordBox">
+        <input type="password" id="confirm" required placeholder="Confirm your password" minlength="8">
+        <button type="button" class="show-password-btn" aria-label="Show confirm password">
+          <svg class="show-password-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+          </svg>
+        </button>
+      </div>
       <div class="error-message" id="confirm-error"></div>
     </div>
 
     <div class="checkbox">
       <label><input type="checkbox" required> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
     </div>
-    <div class="checkbox">
+    <!-- <div class="checkbox">
       <label><input type="checkbox"> I’d like to receive marketing emails</label>
-    </div>
+    </div> -->
 
     <button type="submit" class="btn btn-primary">Create Account</button>
   </form>

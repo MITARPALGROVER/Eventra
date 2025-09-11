@@ -122,6 +122,36 @@ input:focus {
   outline: 2px solid var(--primary);
 }
 
+/* Password container and toggle button */
+.passwordBox {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.show-password-btn {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  color: #6b7280;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  width: 1rem;
+  height: 1rem;
+}
+
+.show-password-btn:hover {
+  color: #374151;
+}
+
+.show-password-icon {
+  width: 16px;
+  height: 16px;
+}
+
 /* Error messages */
 .error-message {
   color: #dc2626;
